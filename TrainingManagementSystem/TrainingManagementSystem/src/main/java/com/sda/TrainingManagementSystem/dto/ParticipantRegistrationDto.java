@@ -1,26 +1,14 @@
-package com.sda.TrainingManagementSystem.model;
+package com.sda.TrainingManagementSystem.dto;
 
-import javax.persistence.*;
+import com.sda.TrainingManagementSystem.model.Course;
+import com.sda.TrainingManagementSystem.model.User;
+
 import java.util.Date;
 
-
-@Entity
-@Table(name="registration")
-public class ParticipantRegistration {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ParticipantRegistrationDto {
     private Long id;
-
-    @Temporal(TemporalType.TIMESTAMP)
     private Date date;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
     private User user;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="course_id")
     private Course course;
 
     public Long getId() {
@@ -54,5 +42,4 @@ public class ParticipantRegistration {
     public void setCourse( Course course ) {
         this.course = course;
     }
-
 }

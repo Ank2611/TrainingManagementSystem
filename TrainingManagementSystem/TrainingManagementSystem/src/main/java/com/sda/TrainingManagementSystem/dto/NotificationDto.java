@@ -1,28 +1,17 @@
-package com.sda.TrainingManagementSystem.model;
+package com.sda.TrainingManagementSystem.dto;
 
-import javax.persistence.*;
+import com.sda.TrainingManagementSystem.model.Classes;
+import com.sda.TrainingManagementSystem.model.UserNotification;
+
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name = "notifications")
-public class Notification {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class NotificationDto {
     private Long id;
     private String subject;
     private String contents;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name="classes_notification",
-            joinColumns = @JoinColumn(name="notification_id"),
-            inverseJoinColumns = @JoinColumn(name = "classes_id"))
     private List<Classes> classes = new ArrayList<>();
-
-    @OneToMany(mappedBy = "readNotification", cascade = CascadeType.ALL)
     private List<UserNotification> userNotificationList = new ArrayList<>();
-
-    @OneToMany(mappedBy = "unreadNotification", cascade = CascadeType.ALL)
     private List<UserNotification> userNotificationList1 = new ArrayList<>();
 
     public Long getId() {

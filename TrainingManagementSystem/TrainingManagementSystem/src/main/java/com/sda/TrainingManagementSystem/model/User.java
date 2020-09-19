@@ -1,6 +1,8 @@
 package com.sda.TrainingManagementSystem.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="users")
@@ -17,28 +19,12 @@ public class User {
     private String lastName;
     private boolean isActive;
 
-    @OneToOne
+    @OneToOne(mappedBy="user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private ParticipantRegistration participantRegistration;
 
-    @ManyToOne
-    @JoinColumn(name="userId")
-    private ClassUnit classUnit;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<UserNotification> userNotificationList = new ArrayList<>();
 
-    public ParticipantRegistration getParticipantRegistration() {
-        return participantRegistration;
-    }
-
-    public void setParticipantRegistration( ParticipantRegistration participantRegistration ) {
-        this.participantRegistration = participantRegistration;
-    }
-
-    public ClassUnit getClassUnit() {
-        return classUnit;
-    }
-
-    public void setClassUnit( ClassUnit classUnit ) {
-        this.classUnit = classUnit;
-    }
 
     public long getId() {
         return id;
@@ -95,4 +81,21 @@ public class User {
     public void setActive( boolean active ) {
         isActive = active;
     }
+
+    public ParticipantRegistration getParticipantRegistration() {
+        return participantRegistration;
+    }
+
+    public void setParticipantRegistration( ParticipantRegistration participantRegistration ) {
+        this.participantRegistration = participantRegistration;
+    }
+
+    public List<UserNotification> getUserNotificationList() {
+        return userNotificationList;
+    }
+
+    public void setUserNotificationList( List<UserNotification> userNotificationList ) {
+        this.userNotificationList = userNotificationList;
+    }
+
 }

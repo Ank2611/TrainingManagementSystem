@@ -1,25 +1,15 @@
-package com.sda.TrainingManagementSystem.model;
+package com.sda.TrainingManagementSystem.dto;
 
-import javax.persistence.*;
+import com.sda.TrainingManagementSystem.model.ClassUnit;
+import com.sda.TrainingManagementSystem.model.ParticipantRegistration;
+
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name="courses")
-public class Course {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CourseDto {
     private long id;
-
     private String name;
-
-    @ManyToMany (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name="course_classUnit",
-    joinColumns = {@JoinColumn(name="courseId",nullable = false, updatable = false)},
-    inverseJoinColumns = {@JoinColumn(name="classUnitId", nullable = false, updatable = false)})
     private List<ClassUnit> classUnitList = new ArrayList<>();
-
-    @OneToOne(mappedBy="course", cascade = CascadeType.ALL, orphanRemoval = true)
     private ParticipantRegistration participantRegistration;
 
     public long getId() {
@@ -53,6 +43,4 @@ public class Course {
     public void setParticipantRegistration( ParticipantRegistration participantRegistration ) {
         this.participantRegistration = participantRegistration;
     }
-
 }
-

@@ -1,24 +1,15 @@
-package com.sda.TrainingManagementSystem.model;
+package com.sda.TrainingManagementSystem.dto;
 
-import org.hibernate.annotations.GeneratorType;
+import com.sda.TrainingManagementSystem.model.Classes;
+import com.sda.TrainingManagementSystem.model.Course;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table
-public class ClassUnit {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ClassUnitDto {
     private Long id;
     private String name;
-
-    @ManyToMany(fetch=FetchType.LAZY, mappedBy="classUnitList")
     private List<Course> courses = new ArrayList<>();
-
-    @OneToMany(mappedBy = "classUnit", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Classes> classesList = new ArrayList<>();
 
     public Long getId() {

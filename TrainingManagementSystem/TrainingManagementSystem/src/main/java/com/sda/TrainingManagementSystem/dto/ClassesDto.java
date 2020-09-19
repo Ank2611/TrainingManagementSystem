@@ -1,25 +1,17 @@
-package com.sda.TrainingManagementSystem.model;
+package com.sda.TrainingManagementSystem.dto;
 
-import javax.persistence.*;
+import com.sda.TrainingManagementSystem.model.ClassUnit;
+import com.sda.TrainingManagementSystem.model.Notification;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Entity
-@Table(name="classes")
-public class Classes {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ClassesDto {
     private Long id;
     private String subject;
-
-    @Temporal(TemporalType.TIMESTAMP)
     private Date date;
-
-    @ManyToOne(fetch = FetchType.LAZY)
     private ClassUnit classUnit;
-
-    @ManyToMany(mappedBy = "classes")
     private List<Notification> notificationList = new ArrayList<>();
 
     public Long getId() {
