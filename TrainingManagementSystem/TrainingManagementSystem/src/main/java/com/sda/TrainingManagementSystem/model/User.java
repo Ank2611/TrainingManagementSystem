@@ -10,23 +10,34 @@ public class User {
     private long id;
     private String userName;
     private String password;
-//    @Enumerated(EnumType.STRING)
-    private String type;
+
+    @Enumerated(EnumType.STRING)
+    private Type type;
     private String firstName;
     private String lastName;
     private boolean isActive;
 
-    public User() {
+    @OneToOne
+    private ParticipantRegistration participantRegistration;
+
+    @ManyToOne
+    @JoinColumn(name="userId")
+    private ClassUnit classUnit;
+
+    public ParticipantRegistration getParticipantRegistration() {
+        return participantRegistration;
     }
 
-    public User( long id, String userName, String password, String type, String firstName, String lastName, boolean isActive ) {
-        this.id = id;
-        this.userName = userName;
-        this.password = password;
-        this.type = type;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.isActive = isActive;
+    public void setParticipantRegistration( ParticipantRegistration participantRegistration ) {
+        this.participantRegistration = participantRegistration;
+    }
+
+    public ClassUnit getClassUnit() {
+        return classUnit;
+    }
+
+    public void setClassUnit( ClassUnit classUnit ) {
+        this.classUnit = classUnit;
     }
 
     public long getId() {
@@ -53,11 +64,11 @@ public class User {
         this.password = password;
     }
 
-    public String getType() {
+    public Type getType() {
         return type;
     }
 
-    public void setType( String type ) {
+    public void setType( Type type ) {
         this.type = type;
     }
 

@@ -17,8 +17,9 @@ public class ClassUnit {
     @ManyToMany(fetch=FetchType.LAZY, mappedBy="classUnitList")
     private List<Course> courses;
 
-    @ManyToMany(fetch=FetchType.LAZY, mappedBy="classes")
-    private List<Classes> classes;
+   @OneToMany
+   @JoinColumn(name="classUnit_id")
+   private List<User> usersList;
 
     public Long getId() {
         return id;
@@ -44,12 +45,11 @@ public class ClassUnit {
         this.courses = courses;
     }
 
-    public List<Classes> getClasses() {
-        return classes;
+    public List<User> getUsersList() {
+        return usersList;
     }
 
-    public void setClasses( List<Classes> classes ) {
-        this.classes = classes;
+    public void setUsersList( List<User> usersList ) {
+        this.usersList = usersList;
     }
-
 }

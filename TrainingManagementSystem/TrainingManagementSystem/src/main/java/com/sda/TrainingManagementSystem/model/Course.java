@@ -17,8 +17,6 @@ public class Course {
     joinColumns = {@JoinColumn(name="courseId",nullable = false, updatable = false)},
     inverseJoinColumns = {@JoinColumn(name="classUnitId", nullable = false, updatable = false)})
 
-    @OneToMany
-    @JoinColumn(name="classUnitId")
     private List<ClassUnit> classUnitList;
 
     public long getId() {

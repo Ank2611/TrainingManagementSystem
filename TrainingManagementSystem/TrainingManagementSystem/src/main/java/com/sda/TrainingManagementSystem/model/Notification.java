@@ -11,5 +11,5 @@ public class Notification {
     private String subject;
     private String contents;
 
-    private Classes classes;
+//    private Classes classes;
 }
