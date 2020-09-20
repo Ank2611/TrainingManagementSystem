@@ -19,10 +19,10 @@ public class Notification {
             inverseJoinColumns = @JoinColumn(name = "classes_id"))
     private List<Classes> classes = new ArrayList<>();
 
-    @OneToMany(mappedBy = "readNotification", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "readNotification", cascade = CascadeType.ALL)
     private List<UserNotification> userNotificationList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "unreadNotification", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "unreadNotification", cascade = CascadeType.ALL)
     private List<UserNotification> userNotificationList1 = new ArrayList<>();
 
     public Long getId() {
@@ -72,4 +72,5 @@ public class Notification {
     public void setUserNotificationList1( List<UserNotification> userNotificationList1 ) {
         this.userNotificationList1 = userNotificationList1;
     }
+
 }

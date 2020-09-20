@@ -19,7 +19,7 @@ public class Classes {
     @ManyToOne(fetch = FetchType.LAZY)
     private ClassUnit classUnit;
 
-    @ManyToMany(mappedBy = "classes")
+    @ManyToMany(mappedBy = "classes", cascade = CascadeType.ALL)
     private List<Notification> notificationList = new ArrayList<>();
 
     public Long getId() {
@@ -62,3 +62,4 @@ public class Classes {
         this.notificationList = notificationList;
     }
 }
+

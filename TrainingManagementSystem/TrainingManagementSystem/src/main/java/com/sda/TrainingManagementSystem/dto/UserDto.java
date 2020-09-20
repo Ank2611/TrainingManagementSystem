@@ -15,7 +15,7 @@ public class UserDto {
     private String lastName;
     private boolean isActive;
     private ParticipantRegistration participantRegistration;
-    private List<UserNotification> userNotificationList = new ArrayList<>();
+    private UserNotification userNotification;
 
     public long getId() {
         return id;
@@ -81,11 +81,11 @@ public class UserDto {
         this.participantRegistration = participantRegistration;
     }
 
-    public List<UserNotification> getUserNotificationList() {
-        return userNotificationList;
+    public UserNotification getUserNotification() {
+        return userNotification;
     }
 
-    public void setUserNotificationList( List<UserNotification> userNotificationList ) {
-        this.userNotificationList = userNotificationList;
+    public void setUserNotification( UserNotification userNotification ) {
+        this.userNotification = userNotification;
     }
 }

@@ -22,8 +22,8 @@ public class User {
     @OneToOne(mappedBy="user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private ParticipantRegistration participantRegistration;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<UserNotification> userNotificationList = new ArrayList<>();
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private UserNotification userNotification;
 
 
     public long getId() {
@@ -90,12 +90,11 @@ public class User {
         this.participantRegistration = participantRegistration;
     }
 
-    public List<UserNotification> getUserNotificationList() {
-        return userNotificationList;
+    public UserNotification getUserNotification() {
+        return userNotification;
     }
 
-    public void setUserNotificationList( List<UserNotification> userNotificationList ) {
-        this.userNotificationList = userNotificationList;
+    public void setUserNotification( UserNotification userNotification ) {
+        this.userNotification = userNotification;
     }
-
 }

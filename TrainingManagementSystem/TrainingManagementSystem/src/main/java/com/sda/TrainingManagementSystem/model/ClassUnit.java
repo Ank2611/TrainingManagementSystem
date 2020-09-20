@@ -15,7 +15,7 @@ public class ClassUnit {
     private Long id;
     private String name;
 
-    @ManyToMany(fetch=FetchType.LAZY, mappedBy="classUnitList")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "classUnitList")
     private List<Course> courses = new ArrayList<>();
 
     @OneToMany(mappedBy = "classUnit", cascade = CascadeType.ALL, orphanRemoval = true)
