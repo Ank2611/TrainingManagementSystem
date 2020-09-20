@@ -1,6 +1,11 @@
 package com.sda.TrainingManagementSystem.service;
 
+import com.sda.TrainingManagementSystem.dto.CourseDto;
+import com.sda.TrainingManagementSystem.dto.ParticipantRegistrationDto;
 import com.sda.TrainingManagementSystem.dto.UserDto;
+import com.sda.TrainingManagementSystem.model.Course;
+import com.sda.TrainingManagementSystem.model.ParticipantRegistration;
+import com.sda.TrainingManagementSystem.model.Type;
 import com.sda.TrainingManagementSystem.model.User;
 import com.sda.TrainingManagementSystem.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +31,7 @@ public class UserServiceImpl implements UserService {
             userDto.setId(userFounded.getId());
             userDto.setUserName(userFounded.getUserName());
             userDto.setPassword(userFounded.getPassword());
-//            userDto.setType(userFounded.getType());
+            userDto.setType(userFounded.getType());
             userDto.setFirstName(userFounded.getFirstName());
             userDto.setLastName(userFounded.getLastName());
             userDto.setActive(userFounded.isActive());
@@ -42,14 +47,26 @@ public class UserServiceImpl implements UserService {
         List<UserDto> userDtoList = new ArrayList<>();
         for (User user : users) {
             UserDto userDto = new UserDto();
+            ParticipantRegistrationDto participantRegistrationDto = new ParticipantRegistrationDto();
+            ParticipantRegistration participantRegistration = user.getParticipantRegistration();
+            CourseDto courseDto = new CourseDto();
+            Course course = participantRegistration.getCourse();
+
             userDto.setId(user.getId());
             userDto.setUserName(user.getUserName());
             userDto.setPassword(user.getPassword());
-//            userDto.setType(user.getType());
+            userDto.setType(user.getType());
             userDto.setFirstName(user.getFirstName());
             userDto.setLastName(user.getLastName());
             userDto.setActive(user.isActive());
 
+            courseDto.setId(course.getId());
+            courseDto.setName(course.getName());
+
+            participantRegistrationDto.setId(participantRegistration.getId());
+            participantRegistrationDto.setCourseDto(courseDto);
+            participantRegistrationDto.setDate(participantRegistration.getDate());
+            userDto.setParticipantRegistrationDto(participantRegistrationDto);
             userDtoList.add(userDto);
         }
         return userDtoList;
@@ -60,7 +77,7 @@ public class UserServiceImpl implements UserService {
         User newUser = new User();
         newUser.setUserName(userDto.getUserName());
         newUser.setPassword(userDto.getPassword());
-//        newUser.setType(userDto.getType());
+        newUser.setType((Type) userDto.getType());
         newUser.setFirstName(userDto.getFirstName());
         newUser.setLastName(userDto.getLastName());
         newUser.setActive(userDto.isActive());
@@ -71,11 +88,11 @@ public class UserServiceImpl implements UserService {
     public void updateUser( UserDto userDto ) {
 
         Optional<User> foundUser = userRepository.findById(userDto.getId());
-        if(foundUser.isPresent()){
+        if (foundUser.isPresent()) {
             User user = foundUser.get();
             user.setUserName(userDto.getUserName());
             user.setPassword(userDto.getPassword());
-//            user.setType(userDto.getType());
+            user.setType((Type) userDto.getType());
             user.setFirstName(userDto.getFirstName());
             user.setLastName(userDto.getLastName());
             user.setActive(userDto.isActive());
