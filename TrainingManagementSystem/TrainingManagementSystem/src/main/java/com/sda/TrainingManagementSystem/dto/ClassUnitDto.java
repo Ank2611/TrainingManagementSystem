@@ -9,8 +9,8 @@ import java.util.List;
 public class ClassUnitDto {
     private Long id;
     private String name;
-    private List<Course> courses = new ArrayList<>();
-    private List<Classes> classesList = new ArrayList<>();
+    private List<CourseDto> coursesDto = new ArrayList<>();
+    private List<ClassesDto> classesDtoList = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -28,19 +28,19 @@ public class ClassUnitDto {
         this.name = name;
     }
 
-    public List<Course> getCourses() {
-        return courses;
+    public List<CourseDto> getCoursesDto() {
+        return coursesDto;
     }
 
-    public void setCourses( List<Course> courses ) {
-        this.courses = courses;
+    public void setCoursesDto( List<CourseDto> coursesDto ) {
+        this.coursesDto = coursesDto;
     }
 
-    public List<Classes> getClassesList() {
-        return classesList;
+    public List<ClassesDto> getClassesDtoList() {
+        return classesDtoList;
     }
 
-    public void setClassesList( List<Classes> classesList ) {
-        this.classesList = classesList;
+    public void setClassesDtoList( List<ClassesDto> classesDtoList ) {
+        this.classesDtoList = classesDtoList;
     }
 }

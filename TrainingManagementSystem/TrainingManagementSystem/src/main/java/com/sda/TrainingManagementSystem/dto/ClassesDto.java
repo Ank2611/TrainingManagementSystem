@@ -11,8 +11,8 @@ public class ClassesDto {
     private Long id;
     private String subject;
     private Date date;
-    private ClassUnit classUnit;
-    private List<Notification> notificationList = new ArrayList<>();
+    private ClassUnitDto classUnitDto;
+    private List<NotificationDto> notificationDtoList = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -38,19 +38,19 @@ public class ClassesDto {
         this.date = date;
     }
 
-    public ClassUnit getClassUnit() {
-        return classUnit;
+    public ClassUnitDto getClassUnitDto() {
+        return classUnitDto;
     }
 
-    public void setClassUnit( ClassUnit classUnit ) {
-        this.classUnit = classUnit;
+    public void setClassUnitDto( ClassUnitDto classUnitDto ) {
+        this.classUnitDto = classUnitDto;
     }
 
-    public List<Notification> getNotificationList() {
-        return notificationList;
+    public List<NotificationDto> getNotificationDtoList() {
+        return notificationDtoList;
     }
 
-    public void setNotificationList( List<Notification> notificationList ) {
-        this.notificationList = notificationList;
+    public void setNotificationDtoList( List<NotificationDto> notificationDtoList ) {
+        this.notificationDtoList = notificationDtoList;
     }
 }

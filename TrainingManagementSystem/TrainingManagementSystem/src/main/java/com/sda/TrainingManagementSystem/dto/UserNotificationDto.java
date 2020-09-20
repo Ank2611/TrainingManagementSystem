@@ -5,9 +5,9 @@ import com.sda.TrainingManagementSystem.model.User;
 
 public class UserNotificationDto {
     private long id;
-    private Notification readNotification;
-    private Notification unreadNotification;
-    private User user;
+    private NotificationDto readNotificationDto;
+    private NotificationDto unreadNotificationDto;
+    private UserDto userDto;
 
     public long getId() {
         return id;
@@ -17,27 +17,27 @@ public class UserNotificationDto {
         this.id = id;
     }
 
-    public Notification getReadNotification() {
-        return readNotification;
+    public NotificationDto getReadNotificationDto() {
+        return readNotificationDto;
     }
 
-    public void setReadNotification( Notification readNotification ) {
-        this.readNotification = readNotification;
+    public void setReadNotificationDto( NotificationDto readNotificationDto ) {
+        this.readNotificationDto = readNotificationDto;
     }
 
-    public Notification getUnreadNotification() {
-        return unreadNotification;
+    public NotificationDto getUnreadNotificationDto() {
+        return unreadNotificationDto;
     }
 
-    public void setUnreadNotification( Notification unreadNotification ) {
-        this.unreadNotification = unreadNotification;
+    public void setUnreadNotificationDto( NotificationDto unreadNotificationDto ) {
+        this.unreadNotificationDto = unreadNotificationDto;
     }
 
-    public User getUser() {
-        return user;
+    public UserDto getUserDto() {
+        return userDto;
     }
 
-    public void setUser( User user ) {
-        this.user = user;
+    public void setUserDto( UserDto userDto ) {
+        this.userDto = userDto;
     }
 }

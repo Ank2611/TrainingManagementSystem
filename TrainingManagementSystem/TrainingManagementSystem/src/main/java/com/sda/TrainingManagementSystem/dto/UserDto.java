@@ -14,8 +14,8 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private boolean isActive;
-    private ParticipantRegistration participantRegistration;
-    private UserNotification userNotification;
+    private ParticipantRegistrationDto participantRegistrationDto;
+    private UserNotificationDto userNotificationDto;
 
     public long getId() {
         return id;
@@ -73,19 +73,19 @@ public class UserDto {
         isActive = active;
     }
 
-    public ParticipantRegistration getParticipantRegistration() {
-        return participantRegistration;
+    public ParticipantRegistrationDto getParticipantRegistrationDto() {
+        return participantRegistrationDto;
     }
 
-    public void setParticipantRegistration( ParticipantRegistration participantRegistration ) {
-        this.participantRegistration = participantRegistration;
+    public void setParticipantRegistrationDto( ParticipantRegistrationDto participantRegistrationDto ) {
+        this.participantRegistrationDto = participantRegistrationDto;
     }
 
-    public UserNotification getUserNotification() {
-        return userNotification;
+    public UserNotificationDto getUserNotificationDto() {
+        return userNotificationDto;
     }
 
-    public void setUserNotification( UserNotification userNotification ) {
-        this.userNotification = userNotification;
+    public void setUserNotificationDto( UserNotificationDto userNotificationDto ) {
+        this.userNotificationDto = userNotificationDto;
     }
 }

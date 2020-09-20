@@ -8,8 +8,8 @@ import java.util.Date;
 public class ParticipantRegistrationDto {
     private Long id;
     private Date date;
-    private User user;
-    private Course course;
+    private UserDto userDto;
+    private CourseDto courseDto;
 
     public Long getId() {
         return id;
@@ -27,19 +27,19 @@ public class ParticipantRegistrationDto {
         this.date = date;
     }
 
-    public User getUser() {
-        return user;
+    public UserDto getUserDto() {
+        return userDto;
     }
 
-    public void setUser( User user ) {
-        this.user = user;
+    public void setUserDto( UserDto userDto ) {
+        this.userDto = userDto;
     }
 
-    public Course getCourse() {
-        return course;
+    public CourseDto getCourseDto() {
+        return courseDto;
     }
 
-    public void setCourse( Course course ) {
-        this.course = course;
+    public void setCourseDto( CourseDto courseDto ) {
+        this.courseDto = courseDto;
     }
 }

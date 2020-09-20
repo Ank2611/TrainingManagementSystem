@@ -10,9 +10,9 @@ public class NotificationDto {
     private Long id;
     private String subject;
     private String contents;
-    private List<Classes> classes = new ArrayList<>();
-    private List<UserNotification> userNotificationList = new ArrayList<>();
-    private List<UserNotification> userNotificationList1 = new ArrayList<>();
+    private List<ClassesDto> classesDtos = new ArrayList<>();
+    private List<UserNotificationDto> userNotificationDtoList = new ArrayList<>();
+    private List<UserNotificationDto> userNotificationDtoList1 = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -38,27 +38,27 @@ public class NotificationDto {
         this.contents = contents;
     }
 
-    public List<Classes> getClasses() {
-        return classes;
+    public List<ClassesDto> getClassesDtos() {
+        return classesDtos;
     }
 
-    public void setClasses( List<Classes> classes ) {
-        this.classes = classes;
+    public void setClassesDtos( List<ClassesDto> classesDtos ) {
+        this.classesDtos = classesDtos;
     }
 
-    public List<UserNotification> getUserNotificationList() {
-        return userNotificationList;
+    public List<UserNotificationDto> getUserNotificationDtoList() {
+        return userNotificationDtoList;
     }
 
-    public void setUserNotificationList( List<UserNotification> userNotificationList ) {
-        this.userNotificationList = userNotificationList;
+    public void setUserNotificationDtoList( List<UserNotificationDto> userNotificationDtoList ) {
+        this.userNotificationDtoList = userNotificationDtoList;
     }
 
-    public List<UserNotification> getUserNotificationList1() {
-        return userNotificationList1;
+    public List<UserNotificationDto> getUserNotificationDtoList1() {
+        return userNotificationDtoList1;
     }
 
-    public void setUserNotificationList1( List<UserNotification> userNotificationList1 ) {
-        this.userNotificationList1 = userNotificationList1;
+    public void setUserNotificationDtoList1( List<UserNotificationDto> userNotificationDtoList1 ) {
+        this.userNotificationDtoList1 = userNotificationDtoList1;
     }
 }
