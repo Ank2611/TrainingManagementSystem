@@ -10,7 +10,7 @@ public class UserDto {
     private long id;
     private String userName;
     private String password;
-    private Enum type;
+    private String type;
     private String firstName;
     private String lastName;
     private boolean isActive;
@@ -41,11 +41,11 @@ public class UserDto {
         this.password = password;
     }
 
-    public Enum getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType( Enum type ) {
+    public void setType( String type ) {
         this.type = type;
     }
 

@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
             userDto.setId(userFounded.getId());
             userDto.setUserName(userFounded.getUserName());
             userDto.setPassword(userFounded.getPassword());
-            userDto.setType(userFounded.getType());
+            userDto.setType(userFounded.getType().name());
             userDto.setFirstName(userFounded.getFirstName());
             userDto.setLastName(userFounded.getLastName());
             userDto.setActive(userFounded.isActive());
@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
             userDto.setId(user.getId());
             userDto.setUserName(user.getUserName());
             userDto.setPassword(user.getPassword());
-            userDto.setType(user.getType());
+            userDto.setType(user.getType().name());
             userDto.setFirstName(user.getFirstName());
             userDto.setLastName(user.getLastName());
             userDto.setActive(user.isActive());
@@ -77,7 +77,7 @@ public class UserServiceImpl implements UserService {
         User newUser = new User();
         newUser.setUserName(userDto.getUserName());
         newUser.setPassword(userDto.getPassword());
-        newUser.setType((Type) userDto.getType());
+        newUser.setType(Type.valueOf(userDto.getType()));
         newUser.setFirstName(userDto.getFirstName());
         newUser.setLastName(userDto.getLastName());
         newUser.setActive(userDto.isActive());
@@ -92,7 +92,7 @@ public class UserServiceImpl implements UserService {
             User user = foundUser.get();
             user.setUserName(userDto.getUserName());
             user.setPassword(userDto.getPassword());
-            user.setType((Type) userDto.getType());
+            user.setType(Type.valueOf(userDto.getType()));
             user.setFirstName(userDto.getFirstName());
             user.setLastName(userDto.getLastName());
             user.setActive(userDto.isActive());
