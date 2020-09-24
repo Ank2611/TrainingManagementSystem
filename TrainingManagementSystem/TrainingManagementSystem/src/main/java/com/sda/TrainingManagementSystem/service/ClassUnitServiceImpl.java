@@ -17,10 +17,10 @@ import java.util.Optional;
 public class ClassUnitServiceImpl implements ClassUnitService {
 
     @Autowired
-    ClassUnitRepository classUnitRepository;
+    private ClassUnitRepository classUnitRepository;
 
     @Override
-    public ClassUnitDto getClassUnitDtoById( Long id ) {
+    public ClassUnitDto getClassUnitById( Long id ) {
         Optional<ClassUnit> classUnit = classUnitRepository.findById(id);
         if (classUnit.isPresent()) {
             ClassUnit classUnit1 = classUnit.get();
@@ -65,9 +65,12 @@ public class ClassUnitServiceImpl implements ClassUnitService {
 
     @Override
     public void updateClassUnit( ClassUnitDto classUnitDto ) {
-        ClassUnit updClassUnit = new ClassUnit();
-        updClassUnit.setName(classUnitDto.getName());
-        classUnitRepository.saveAndFlush(updClassUnit);
+        Optional<ClassUnit> foundClassUnit = classUnitRepository.findById(classUnitDto.getId());
+        if(foundClassUnit.isPresent()) {
+            ClassUnit updClassUnit = foundClassUnit.get();
+            updClassUnit.setName(classUnitDto.getName());
+            classUnitRepository.saveAndFlush(updClassUnit);
+        }
     }
 
     @Override

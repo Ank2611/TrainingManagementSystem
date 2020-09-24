@@ -1,8 +1,5 @@
 package com.sda.TrainingManagementSystem.dto;
 
-import com.sda.TrainingManagementSystem.model.Course;
-import com.sda.TrainingManagementSystem.model.User;
-
 import java.util.Date;
 
 public class ParticipantRegistrationDto {

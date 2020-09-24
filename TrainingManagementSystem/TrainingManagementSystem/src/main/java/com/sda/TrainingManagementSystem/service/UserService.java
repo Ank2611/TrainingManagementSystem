@@ -1,6 +1,8 @@
 package com.sda.TrainingManagementSystem.service;
 
 import com.sda.TrainingManagementSystem.dto.UserDto;
+import com.sda.TrainingManagementSystem.model.User;
+
 import java.util.List;
 
 public interface UserService {
@@ -13,4 +15,5 @@ public interface UserService {
     void updateUser( UserDto userDto );
 
     void deleteUser(Long id);
+    List<UserDto> findByType( String type);
 }

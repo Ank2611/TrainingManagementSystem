@@ -1,7 +1,5 @@
 package com.sda.TrainingManagementSystem.dto;
 
-import com.sda.TrainingManagementSystem.model.ClassUnit;
-import com.sda.TrainingManagementSystem.model.ParticipantRegistration;
 
 import java.util.ArrayList;
 import java.util.List;

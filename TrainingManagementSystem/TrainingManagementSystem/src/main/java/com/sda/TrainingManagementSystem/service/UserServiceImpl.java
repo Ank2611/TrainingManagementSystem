@@ -47,10 +47,10 @@ public class UserServiceImpl implements UserService {
         List<UserDto> userDtoList = new ArrayList<>();
         for (User user : users) {
             UserDto userDto = new UserDto();
-            ParticipantRegistrationDto participantRegistrationDto = new ParticipantRegistrationDto();
-            ParticipantRegistration participantRegistration = user.getParticipantRegistration();
-            CourseDto courseDto = new CourseDto();
-            Course course = participantRegistration.getCourse();
+//            ParticipantRegistrationDto participantRegistrationDto = new ParticipantRegistrationDto();
+//            ParticipantRegistration participantRegistration = user.getParticipantRegistration();
+//            CourseDto courseDto = new CourseDto();
+//            Course course = participantRegistration.getCourse();
 
             userDto.setId(user.getId());
             userDto.setUserName(user.getUserName());
@@ -60,13 +60,13 @@ public class UserServiceImpl implements UserService {
             userDto.setLastName(user.getLastName());
             userDto.setActive(user.isActive());
 
-            courseDto.setId(course.getId());
-            courseDto.setName(course.getName());
-
-            participantRegistrationDto.setId(participantRegistration.getId());
-            participantRegistrationDto.setCourseDto(courseDto);
-            participantRegistrationDto.setDate(participantRegistration.getDate());
-            userDto.setParticipantRegistrationDto(participantRegistrationDto);
+//            courseDto.setId(course.getId());
+//            courseDto.setName(course.getName());
+//
+//            participantRegistrationDto.setId(participantRegistration.getId());
+//            participantRegistrationDto.setCourseDto(courseDto);
+//            participantRegistrationDto.setDate(participantRegistration.getDate());
+//            userDto.setParticipantRegistrationDto(participantRegistrationDto);
             userDtoList.add(userDto);
         }
         return userDtoList;
@@ -104,4 +104,22 @@ public class UserServiceImpl implements UserService {
     public void deleteUser( Long id ) {
         userRepository.deleteById(id);
     }
+
+    @Override
+    public List<UserDto> findByType( String type ) {
+        List<User> userByTypeList = userRepository.findByType(type);
+        List<UserDto> userDtoList=new ArrayList<>();
+        for (User user: userByTypeList) {
+            UserDto userDto = new UserDto();
+            userDto.setId(user.getId());
+            userDto.setUserName(user.getUserName());
+            userDto.setFirstName(user.getFirstName());
+            userDto.setLastName(user.getLastName());
+            userDto.setActive(user.isActive());
+            userDtoList.add(userDto);
+        }
+        return userDtoList;
+    }
+
+
 }

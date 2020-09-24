@@ -13,7 +13,7 @@ import java.util.Optional;
 @Service
 public class CourseServiceImpl implements CourseService {
     @Autowired
-    CourseRepository courseRepository;
+    private CourseRepository courseRepository;
 
     @Override
     public CourseDto getCourseDtoById( Long id ) {
@@ -50,9 +50,12 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public void updateCourse( CourseDto courseDto ) {
-        Course updCourse = new Course();
-        updCourse.setName(courseDto.getName());
-        courseRepository.saveAndFlush(updCourse);
+        Optional<Course> foundCourse = courseRepository.findById(courseDto.getId());
+        if(foundCourse.isPresent()) {
+            Course updCourse = foundCourse.get();
+            updCourse.setName(courseDto.getName());
+            courseRepository.saveAndFlush(updCourse);
+        }
     }
 
     @Override

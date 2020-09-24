@@ -2,7 +2,6 @@ package com.sda.TrainingManagementSystem.controller;
 
 
 import com.sda.TrainingManagementSystem.dto.UserDto;
-import com.sda.TrainingManagementSystem.model.User;
 import com.sda.TrainingManagementSystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,6 +29,12 @@ public class UserController {
         UserDto userDto = userService.getUserDto(id);
         return new ResponseEntity(userDto, HttpStatus.OK);
     }
+
+//    @GetMapping("/getUser/{type}")
+//    public ResponseEntity<UserDto> findByType(@PathVariable("type") String type){
+//        List<UserDto> userDtoList = userService.findByType(type);
+//        return new ResponseEntity(userDtoList, HttpStatus.OK);
+//    }
 
     @PostMapping("/addUser")
     public ResponseEntity addUser(@RequestBody UserDto userDto){

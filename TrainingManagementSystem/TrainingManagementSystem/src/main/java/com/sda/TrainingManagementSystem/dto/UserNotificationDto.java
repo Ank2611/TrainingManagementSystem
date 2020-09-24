@@ -3,10 +3,12 @@ package com.sda.TrainingManagementSystem.dto;
 import com.sda.TrainingManagementSystem.model.Notification;
 import com.sda.TrainingManagementSystem.model.User;
 
+import java.util.List;
+
 public class UserNotificationDto {
     private long id;
-    private NotificationDto readNotificationDto;
-    private NotificationDto unreadNotificationDto;
+    private List<NotificationDto> readNotificationDtoList;
+    private List<NotificationDto> unreadNotificationDtoList;
     private UserDto userDto;
 
     public long getId() {
@@ -17,20 +19,20 @@ public class UserNotificationDto {
         this.id = id;
     }
 
-    public NotificationDto getReadNotificationDto() {
-        return readNotificationDto;
+    public List<NotificationDto> getReadNotificationDtoList() {
+        return readNotificationDtoList;
     }
 
-    public void setReadNotificationDto( NotificationDto readNotificationDto ) {
-        this.readNotificationDto = readNotificationDto;
+    public void setReadNotificationDtoList( List<NotificationDto> readNotificationDtoList ) {
+        this.readNotificationDtoList = readNotificationDtoList;
     }
 
-    public NotificationDto getUnreadNotificationDto() {
-        return unreadNotificationDto;
+    public List<NotificationDto> getUnreadNotificationDtoList() {
+        return unreadNotificationDtoList;
     }
 
-    public void setUnreadNotificationDto( NotificationDto unreadNotificationDto ) {
-        this.unreadNotificationDto = unreadNotificationDto;
+    public void setUnreadNotificationDtoList( List<NotificationDto> unreadNotificationDtoList ) {
+        this.unreadNotificationDtoList = unreadNotificationDtoList;
     }
 
     public UserDto getUserDto() {

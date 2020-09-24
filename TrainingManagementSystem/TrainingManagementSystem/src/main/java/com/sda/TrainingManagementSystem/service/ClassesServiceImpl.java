@@ -15,7 +15,7 @@ import java.util.Optional;
 public class ClassesServiceImpl implements ClassesService {
 
     @Autowired
-    ClassesRepository classesRepository;
+    private ClassesRepository classesRepository;
 
 
     @Override
@@ -56,10 +56,13 @@ public class ClassesServiceImpl implements ClassesService {
 
     @Override
     public void updateClasses( ClassesDto classesDto ) {
-        Classes updClasses = new Classes();
-        updClasses.setDate(classesDto.getDate());
-        updClasses.setSubject(classesDto.getSubject());
-        classesRepository.saveAndFlush(updClasses);
+        Optional<Classes> foundClasses = classesRepository.findById(classesDto.getId());
+        if(foundClasses.isPresent()) {
+            Classes updClasses = foundClasses.get();
+            updClasses.setDate(classesDto.getDate());
+            updClasses.setSubject(classesDto.getSubject());
+            classesRepository.saveAndFlush(updClasses);
+        }
     }
 
     @Override

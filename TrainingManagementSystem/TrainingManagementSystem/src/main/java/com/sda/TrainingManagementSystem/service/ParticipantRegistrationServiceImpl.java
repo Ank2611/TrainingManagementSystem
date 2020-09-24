@@ -20,7 +20,7 @@ import java.util.Optional;
 public class ParticipantRegistrationServiceImpl implements ParticipantRegistrationService {
 
     @Autowired
-    ParticipantRegistrationRepository repository;
+    private ParticipantRegistrationRepository repository;
 
     @Override
     public ParticipantRegistrationDto getParticipantDto( Long id ) {
@@ -45,9 +45,9 @@ public class ParticipantRegistrationServiceImpl implements ParticipantRegistrati
             userDto.setType(user.getType().name());
             userDto.setActive(user.isActive());
             participantRegistrationDto.setUserDto(userDto);
-
+            return participantRegistrationDto;
         }
-        return participantRegistrationDto;
+        return null;
     }
 
     @Override
@@ -78,32 +78,31 @@ public class ParticipantRegistrationServiceImpl implements ParticipantRegistrati
             participantDtoList.add(participantRegistrationDto);
 
         }
-        return null;
+        return participantDtoList;
     }
 
     @Override
     public void addParticipantRegistration( ParticipantRegistrationDto participantRegistrationDto ) {
-        Optional<ParticipantRegistration> foundParticipantRegistration = repository.findById(participantRegistrationDto.getId());
-        if (foundParticipantRegistration.isPresent()) {
+
             ParticipantRegistration newParticipantRegistration = new ParticipantRegistration();
             newParticipantRegistration.setDate(new Date());
 
-            CourseDto courseDto = participantRegistrationDto.getCourseDto();
-            Course course = new Course();
-            course.setId(courseDto.getId());
-            course.setName(courseDto.getName());
-            newParticipantRegistration.setCourse(course);
-
-            UserDto userDto = participantRegistrationDto.getUserDto();
-            User user = new User();
-            user.setId(userDto.getId());
-            user.setFirstName(userDto.getFirstName());
-            user.setLastName(userDto.getLastName());
-            user.setUserName(userDto.getUserName());
-            newParticipantRegistration.setUser(user);
+//            CourseDto courseDto = participantRegistrationDto.getCourseDto();
+//            Course course = new Course();
+//            course.setId(courseDto.getId());
+//            course.setName(courseDto.getName());
+//            newParticipantRegistration.setCourse(course);
+//
+//            UserDto userDto = participantRegistrationDto.getUserDto();
+//            User user = new User();
+//            user.setId(userDto.getId());
+//            user.setFirstName(userDto.getFirstName());
+//            user.setLastName(userDto.getLastName());
+//            user.setUserName(userDto.getUserName());
+//            newParticipantRegistration.setUser(user);
 
             repository.save(newParticipantRegistration);
-        }
+
     }
 
     @Override
@@ -111,15 +110,16 @@ public class ParticipantRegistrationServiceImpl implements ParticipantRegistrati
         Optional<ParticipantRegistration> participantRegistration = repository.findById(participantRegistrationDto.getId());
         if (participantRegistration.isPresent()) {
             ParticipantRegistration updParticipantRegistration = new ParticipantRegistration();
-//            updParticipantRegistration.setDate(participantRegistrationDto.getDate());
 
             CourseDto courseDto = participantRegistrationDto.getCourseDto();
             Course course = new Course();
+            course.setId(course.getId());
             course.setName(courseDto.getName());
             updParticipantRegistration.setCourse(course);
 
             UserDto userDto = participantRegistrationDto.getUserDto();
             User user = new User();
+            user.setId(userDto.getId());
             user.setFirstName(userDto.getFirstName());
             user.setLastName(userDto.getLastName());
             user.setUserName(userDto.getUserName());
@@ -128,7 +128,7 @@ public class ParticipantRegistrationServiceImpl implements ParticipantRegistrati
             repository.saveAndFlush(updParticipantRegistration);
         }
 
-        }
+    }
 
     @Override
     public void deleteParticipant( Long id ) {

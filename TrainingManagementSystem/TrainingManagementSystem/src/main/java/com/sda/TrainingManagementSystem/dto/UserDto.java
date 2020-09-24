@@ -1,10 +1,5 @@
 package com.sda.TrainingManagementSystem.dto;
 
-import com.sda.TrainingManagementSystem.model.ParticipantRegistration;
-import com.sda.TrainingManagementSystem.model.UserNotification;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class UserDto {
     private long id;
