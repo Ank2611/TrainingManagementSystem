@@ -7,6 +7,7 @@ public class ParticipantRegistrationDto {
     private Date date;
     private UserDto userDto;
     private CourseDto courseDto;
+    private boolean accepted;
 
     public Long getId() {
         return id;
@@ -38,5 +39,13 @@ public class ParticipantRegistrationDto {
 
     public void setCourseDto( CourseDto courseDto ) {
         this.courseDto = courseDto;
+    }
+
+    public boolean isAccepted() {
+        return accepted;
+    }
+
+    public void setAccepted( boolean accepted ) {
+        this.accepted = accepted;
     }
 }

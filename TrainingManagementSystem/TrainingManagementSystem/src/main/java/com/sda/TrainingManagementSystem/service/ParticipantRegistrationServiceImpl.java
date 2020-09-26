@@ -30,6 +30,7 @@ public class ParticipantRegistrationServiceImpl implements ParticipantRegistrati
             ParticipantRegistration participantFound = participantRegistration.get();
             participantRegistrationDto.setId(participantFound.getId());
             participantRegistrationDto.setDate(participantFound.getDate());
+            participantRegistrationDto.setAccepted(participantFound.isAccepted());
 
             CourseDto courseDto = new CourseDto();
             Course course = participantFound.getCourse();
@@ -59,6 +60,7 @@ public class ParticipantRegistrationServiceImpl implements ParticipantRegistrati
             ParticipantRegistrationDto participantRegistrationDto = new ParticipantRegistrationDto();
             participantRegistrationDto.setId(participant.getId());
             participantRegistrationDto.setDate(participant.getDate());
+            participantRegistrationDto.setAccepted(participant.isAccepted());
 
             CourseDto courseDto = new CourseDto();
             Course course = participant.getCourse();
@@ -86,20 +88,21 @@ public class ParticipantRegistrationServiceImpl implements ParticipantRegistrati
 
             ParticipantRegistration newParticipantRegistration = new ParticipantRegistration();
             newParticipantRegistration.setDate(new Date());
+            newParticipantRegistration.setAccepted(participantRegistrationDto.isAccepted());
 
-//            CourseDto courseDto = participantRegistrationDto.getCourseDto();
-//            Course course = new Course();
-//            course.setId(courseDto.getId());
-//            course.setName(courseDto.getName());
-//            newParticipantRegistration.setCourse(course);
-//
-//            UserDto userDto = participantRegistrationDto.getUserDto();
-//            User user = new User();
-//            user.setId(userDto.getId());
-//            user.setFirstName(userDto.getFirstName());
-//            user.setLastName(userDto.getLastName());
-//            user.setUserName(userDto.getUserName());
-//            newParticipantRegistration.setUser(user);
+            CourseDto courseDto = participantRegistrationDto.getCourseDto();
+            Course course = new Course();
+            course.setId(courseDto.getId());
+            course.setName(courseDto.getName());
+            newParticipantRegistration.setCourse(course);
+
+            UserDto userDto = participantRegistrationDto.getUserDto();
+            User user = new User();
+            user.setId(userDto.getId());
+            user.setFirstName(userDto.getFirstName());
+            user.setLastName(userDto.getLastName());
+            user.setUserName(userDto.getUserName());
+            newParticipantRegistration.setUser(user);
 
             repository.save(newParticipantRegistration);
 
@@ -109,7 +112,7 @@ public class ParticipantRegistrationServiceImpl implements ParticipantRegistrati
     public void updateParticipant( ParticipantRegistrationDto participantRegistrationDto ) {
         Optional<ParticipantRegistration> participantRegistration = repository.findById(participantRegistrationDto.getId());
         if (participantRegistration.isPresent()) {
-            ParticipantRegistration updParticipantRegistration = new ParticipantRegistration();
+            ParticipantRegistration updParticipantRegistration = participantRegistration.get();
 
             CourseDto courseDto = participantRegistrationDto.getCourseDto();
             Course course = new Course();
@@ -125,6 +128,7 @@ public class ParticipantRegistrationServiceImpl implements ParticipantRegistrati
             user.setUserName(userDto.getUserName());
             updParticipantRegistration.setUser(user);
 
+            updParticipantRegistration.setAccepted(participantRegistrationDto.isAccepted());
             repository.saveAndFlush(updParticipantRegistration);
         }
 

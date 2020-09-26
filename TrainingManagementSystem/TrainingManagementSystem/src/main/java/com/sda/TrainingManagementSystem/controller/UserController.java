@@ -30,11 +30,11 @@ public class UserController {
         return new ResponseEntity(userDto, HttpStatus.OK);
     }
 
-//    @GetMapping("/getUser/{type}")
-//    public ResponseEntity<UserDto> findByType(@PathVariable("type") String type){
-//        List<UserDto> userDtoList = userService.findByType(type);
-//        return new ResponseEntity(userDtoList, HttpStatus.OK);
-//    }
+    @GetMapping("/getUsersByType/{type}")
+    public ResponseEntity<UserDto> findByType(@PathVariable("type") String type){
+        List<UserDto> userDtoList = userService.findByType(type);
+        return new ResponseEntity(userDtoList, HttpStatus.OK);
+    }
 
     @PostMapping("/addUser")
     public ResponseEntity addUser(@RequestBody UserDto userDto){

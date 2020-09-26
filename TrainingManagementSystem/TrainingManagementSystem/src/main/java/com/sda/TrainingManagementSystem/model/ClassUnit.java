@@ -18,7 +18,7 @@ public class ClassUnit {
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "classUnitList")
     private List<Course> courses = new ArrayList<>();
 
-    @OneToMany(mappedBy = "classUnit", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "classUnit", cascade = CascadeType.ALL)
     private List<Classes> classesList = new ArrayList<>();
 
     public Long getId() {

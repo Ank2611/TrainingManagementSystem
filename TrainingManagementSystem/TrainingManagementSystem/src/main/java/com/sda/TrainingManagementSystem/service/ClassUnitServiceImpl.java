@@ -47,6 +47,7 @@ public class ClassUnitServiceImpl implements ClassUnitService {
         return null;
     }
 
+
     @Override
     public List<ClassUnitDto> getAll() {
         List<ClassUnit> classUnitList = classUnitRepository.findAll();
@@ -58,6 +59,25 @@ public class ClassUnitServiceImpl implements ClassUnitService {
             classUnitDtoList.add(classUnitDto);
         }
         return classUnitDtoList;
+    }
+
+    @Override
+    public List<ClassUnitDto> getAllByIdCourse( Long id ) {
+        Optional<Course> foundCourse = courseRepository.findById(id);
+        if(foundCourse.isPresent()){
+            Course course = foundCourse.get();
+            List<ClassUnit> classUnitList = course.getClassUnitList();
+            List<ClassUnitDto> classUnitDtoList = new ArrayList<>();
+            for(ClassUnit classUnit:classUnitList){
+                ClassUnitDto classUnitDto = new ClassUnitDto();
+                classUnitDto.setId(classUnit.getId());
+                classUnitDto.setName(classUnit.getName());
+                classUnitDtoList.add(classUnitDto);
+              }
+            return classUnitDtoList;
+        }
+
+        return null;
     }
 
     @Override
@@ -83,22 +103,19 @@ public class ClassUnitServiceImpl implements ClassUnitService {
     }
 
     @Override
-    public void linkClassUnitInCourse( Long idClassUnitDto, Long idCourse ) {
-        Optional<ClassUnit> foundClassUnit = classUnitRepository.findById(idClassUnitDto);
+    public void linkClassUnitInCourse( Long idClassUnit, Long idCourse ) {
+        Optional<ClassUnit> foundClassUnit = classUnitRepository.findById(idClassUnit);
         if(foundClassUnit.isPresent()){
             ClassUnit classUnit = foundClassUnit.get();
-            classUnit.setName(classUnit.getName());
-        }
-
-        Optional<Course> foundcourse = courseRepository.findById(idCourse);
-        if(foundcourse.isPresent()){
-            Course course = foundcourse.get();
-//            ClassUnit existingclassUnit =
-//            course.getClassUnitList().add(classUnit);
-            courseRepository.save(course);
+            Optional<Course> foundcourse = courseRepository.findById(idCourse);
+            if(foundcourse.isPresent()){
+                Course course = foundcourse.get();
+                course.getClassUnitList().add(classUnit);
+                courseRepository.save(course);
             }
-
+        }
     }
+
 
     @Override
     public void updateClassUnit( ClassUnitDto classUnitDto ) {

@@ -10,4 +10,5 @@ public interface CourseService {
     void addCourse(CourseDto courseDto);
     void updateCourse(CourseDto courseDto);
     void deleteCourse(Long id);
+    List<CourseDto> findAllCoursesByUser(Long id);
 }

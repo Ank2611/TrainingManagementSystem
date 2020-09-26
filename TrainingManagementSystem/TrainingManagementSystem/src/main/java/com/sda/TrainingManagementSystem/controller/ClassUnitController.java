@@ -31,6 +31,12 @@ public class ClassUnitController {
         return new ResponseEntity(classUnitDto, HttpStatus.OK);
     }
 
+    @GetMapping("/getClassUnitsByIdCourse/{idCourse}")
+    public ResponseEntity<ClassUnitDto> getAllByIdCourse(@PathVariable("idCourse") Long id){
+        List<ClassUnitDto> classUnitDtoList = classUnitService.getAllByIdCourse(id);
+        return new ResponseEntity(classUnitDtoList, HttpStatus.OK);
+    }
+
     @PostMapping("/addClassUnit")
     public ResponseEntity addClassUnit(@RequestBody ClassUnitDto classUnitDto){
         classUnitService.addClassUnit(classUnitDto);
@@ -42,6 +48,11 @@ public class ClassUnitController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
+    @PostMapping("linkClassUnitInCourse/{id1}/{id2}")
+    public ResponseEntity linkClassUnitInCourse(@PathVariable("id1") Long idCourse,@PathVariable("id2") Long idClassUnit){
+        classUnitService.linkClassUnitInCourse(idCourse,idClassUnit);
+        return new ResponseEntity(HttpStatus.OK);
+    }
     @PutMapping("/updateClassUnit")
     public ResponseEntity updateClassUnit(@RequestBody ClassUnitDto classUnitDto){
         classUnitService.updateClassUnit(classUnitDto);

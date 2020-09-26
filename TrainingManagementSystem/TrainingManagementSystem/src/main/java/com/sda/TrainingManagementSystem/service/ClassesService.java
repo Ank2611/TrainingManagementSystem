@@ -11,4 +11,8 @@ public interface ClassesService {
     void addClasses( ClassesDto classesDto );
     void updateClasses( ClassesDto classesDto );
     void deleteClasses( Long id );
+    void addNewClassesInClassUnit(ClassesDto classesDto, Long idClassUnit);
+    void linkClassesInClassUnit(Long idClassesDto, Long idClassUnit);
+    List<ClassesDto> getAllByClassUnitId(Long id);
+
 }

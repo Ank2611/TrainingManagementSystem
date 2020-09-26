@@ -29,6 +29,12 @@ public class CourseController {
         return new ResponseEntity(courseDto, HttpStatus.OK);
     }
 
+    @GetMapping("/findAllCourseByUser/{id}")
+    public ResponseEntity<CourseDto> findAllCoursesByUser(@PathVariable("id") Long id){
+        List<CourseDto> courseDtoList = courseService.findAllCoursesByUser(id);
+        return  new ResponseEntity(courseDtoList, HttpStatus.OK);
+    }
+
     @PostMapping("/addCourse")
     public ResponseEntity addCourse(@RequestBody CourseDto courseDto){
         courseService.addCourse(courseDto);

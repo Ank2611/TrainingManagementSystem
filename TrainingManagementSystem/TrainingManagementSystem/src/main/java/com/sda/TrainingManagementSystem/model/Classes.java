@@ -16,7 +16,7 @@ public class Classes {
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private ClassUnit classUnit;
 
     @ManyToMany(mappedBy = "classes", cascade = CascadeType.ALL)
