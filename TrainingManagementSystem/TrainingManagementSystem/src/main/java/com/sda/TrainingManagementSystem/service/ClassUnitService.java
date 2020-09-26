@@ -10,4 +10,6 @@ public interface ClassUnitService {
     void addClassUnit( ClassUnitDto classUnitDto );
     void updateClassUnit( ClassUnitDto classUnitDto );
     void deleteClassUnit( Long id );
+    void addNewClassUnitInCourse(ClassUnitDto classUnitDto, Long idCourse);
+    void linkClassUnitInCourse(Long idClassUnitDto, Long idCourse);
 }

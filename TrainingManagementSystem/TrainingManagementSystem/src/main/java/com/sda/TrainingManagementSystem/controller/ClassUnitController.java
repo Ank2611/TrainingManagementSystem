@@ -36,6 +36,11 @@ public class ClassUnitController {
         classUnitService.addClassUnit(classUnitDto);
         return new ResponseEntity(HttpStatus.OK);
     }
+    @PostMapping("addNewClassUnitInCourse/{id}")
+    public ResponseEntity addNewClassUnitInCourse(@RequestBody ClassUnitDto classUnitDto,@PathVariable("id") Long idCourse){
+        classUnitService.addNewClassUnitInCourse(classUnitDto, idCourse);
+        return new ResponseEntity(HttpStatus.OK);
+    }
 
     @PutMapping("/updateClassUnit")
     public ResponseEntity updateClassUnit(@RequestBody ClassUnitDto classUnitDto){

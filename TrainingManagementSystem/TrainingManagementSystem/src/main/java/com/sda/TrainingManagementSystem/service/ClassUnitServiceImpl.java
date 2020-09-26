@@ -5,7 +5,9 @@ import com.sda.TrainingManagementSystem.dto.ClassUnitDto;
 import com.sda.TrainingManagementSystem.dto.ClassesDto;
 import com.sda.TrainingManagementSystem.model.ClassUnit;
 import com.sda.TrainingManagementSystem.model.Classes;
+import com.sda.TrainingManagementSystem.model.Course;
 import com.sda.TrainingManagementSystem.repository.ClassUnitRepository;
+import com.sda.TrainingManagementSystem.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,8 @@ public class ClassUnitServiceImpl implements ClassUnitService {
 
     @Autowired
     private ClassUnitRepository classUnitRepository;
+    @Autowired
+    private CourseRepository courseRepository;
 
     @Override
     public ClassUnitDto getClassUnitById( Long id ) {
@@ -64,6 +68,39 @@ public class ClassUnitServiceImpl implements ClassUnitService {
     }
 
     @Override
+    public void addNewClassUnitInCourse( ClassUnitDto classUnitDto, Long idCourse ) {
+        ClassUnit newClassUnit = new ClassUnit();
+        newClassUnit.setName(classUnitDto.getName());
+        classUnitRepository.save(newClassUnit);
+
+        Optional<Course> foundcourse = courseRepository.findById(idCourse);
+        if(foundcourse.isPresent()){
+           Course course = foundcourse.get();
+           course.getClassUnitList().add(newClassUnit);
+           courseRepository.save(course);
+        }
+
+    }
+
+    @Override
+    public void linkClassUnitInCourse( Long idClassUnitDto, Long idCourse ) {
+        Optional<ClassUnit> foundClassUnit = classUnitRepository.findById(idClassUnitDto);
+        if(foundClassUnit.isPresent()){
+            ClassUnit classUnit = foundClassUnit.get();
+            classUnit.setName(classUnit.getName());
+        }
+
+        Optional<Course> foundcourse = courseRepository.findById(idCourse);
+        if(foundcourse.isPresent()){
+            Course course = foundcourse.get();
+//            ClassUnit existingclassUnit =
+//            course.getClassUnitList().add(classUnit);
+            courseRepository.save(course);
+            }
+
+    }
+
+    @Override
     public void updateClassUnit( ClassUnitDto classUnitDto ) {
         Optional<ClassUnit> foundClassUnit = classUnitRepository.findById(classUnitDto.getId());
         if(foundClassUnit.isPresent()) {
@@ -77,4 +114,5 @@ public class ClassUnitServiceImpl implements ClassUnitService {
     public void deleteClassUnit( Long id ) {
         classUnitRepository.deleteById(id);
     }
+
 }
