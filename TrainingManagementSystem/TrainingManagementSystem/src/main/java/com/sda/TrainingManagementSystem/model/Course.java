@@ -19,7 +19,7 @@ public class Course {
     inverseJoinColumns = {@JoinColumn(name="classUnitId", nullable = false, updatable = false)})
     private List<ClassUnit> classUnitList = new ArrayList<>();
 
-    @OneToOne(mappedBy="course", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(mappedBy="course", cascade = CascadeType.ALL)
     private ParticipantRegistration participantRegistration;
 
     public long getId() {

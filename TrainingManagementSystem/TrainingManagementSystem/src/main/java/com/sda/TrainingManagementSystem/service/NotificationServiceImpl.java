@@ -58,10 +58,14 @@ public class NotificationServiceImpl implements NotificationService {
 
     @Override
     public void updateNotification( NotificationDto notificationDto ) {
-        Notification updNotification = new Notification();
-        updNotification.setSubject(notificationDto.getSubject());
-        updNotification.setContents(notificationDto.getContents());
-        notificationRepository.saveAndFlush(updNotification);
+        Optional<Notification> foundNotification = notificationRepository.findById(notificationDto.getId());
+        if(foundNotification.isPresent()) {
+            Notification updNotification = foundNotification.get();
+            updNotification.setSubject(notificationDto.getSubject());
+            updNotification.setContents(notificationDto.getContents());
+            notificationRepository.saveAndFlush(updNotification);
+        }
+
     }
 
     @Override
@@ -79,7 +83,7 @@ public class NotificationServiceImpl implements NotificationService {
         Optional<Classes> foundclasses = classesRepository.findById(idClasses);
         if(foundclasses.isPresent()){
             Classes classes = foundclasses.get();
-            classes.getNotificationList().add(newNotification);
+            newNotification.getClasses().add(classes);
             classesRepository.save(classes);
             }
      }

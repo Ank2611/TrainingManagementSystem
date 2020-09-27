@@ -46,7 +46,7 @@ public class NotificationController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @PutMapping("/updateCourse")
+    @PutMapping("/updateNotification")
     public ResponseEntity updateNotification(@RequestBody NotificationDto notificationDto){
         notificationService.updateNotification(notificationDto);
         return new ResponseEntity(HttpStatus.OK);

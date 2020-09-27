@@ -1,8 +1,5 @@
 package com.sda.TrainingManagementSystem.dto;
 
-import com.sda.TrainingManagementSystem.model.Notification;
-import com.sda.TrainingManagementSystem.model.User;
-
 import java.util.List;
 
 public class UserNotificationDto {

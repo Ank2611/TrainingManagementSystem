@@ -6,7 +6,9 @@ import com.sda.TrainingManagementSystem.dto.UserDto;
 import com.sda.TrainingManagementSystem.model.Course;
 import com.sda.TrainingManagementSystem.model.ParticipantRegistration;
 import com.sda.TrainingManagementSystem.model.User;
+import com.sda.TrainingManagementSystem.repository.CourseRepository;
 import com.sda.TrainingManagementSystem.repository.ParticipantRegistrationRepository;
+import com.sda.TrainingManagementSystem.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,11 @@ public class ParticipantRegistrationServiceImpl implements ParticipantRegistrati
 
     @Autowired
     private ParticipantRegistrationRepository repository;
+
+    @Autowired
+    private CourseRepository courseRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public ParticipantRegistrationDto getParticipantDto( Long id ) {
@@ -91,19 +98,16 @@ public class ParticipantRegistrationServiceImpl implements ParticipantRegistrati
             newParticipantRegistration.setAccepted(participantRegistrationDto.isAccepted());
 
             CourseDto courseDto = participantRegistrationDto.getCourseDto();
-            Course course = new Course();
-            course.setId(courseDto.getId());
-//            course.setName(courseDto.getName());
-            newParticipantRegistration.setCourse(course);
+            Optional<Course> foundCourse = courseRepository.findById(courseDto.getId());
+            if(foundCourse.isPresent()){
+                newParticipantRegistration.setCourse(foundCourse.get());
+            }
 
             UserDto userDto = participantRegistrationDto.getUserDto();
-            User user = new User();
-            user.setId(userDto.getId());
-//            user.setFirstName(userDto.getFirstName());
-//            user.setLastName(userDto.getLastName());
-//            user.setUserName(userDto.getUserName());
-            newParticipantRegistration.setUser(user);
-
+            Optional<User> foundUser = userRepository.findById(userDto.getId());
+            if(foundUser.isPresent()) {
+                newParticipantRegistration.setUser(foundUser.get());
+            }
             repository.save(newParticipantRegistration);
 
     }
@@ -115,23 +119,21 @@ public class ParticipantRegistrationServiceImpl implements ParticipantRegistrati
             ParticipantRegistration updParticipantRegistration = participantRegistration.get();
 
             CourseDto courseDto = participantRegistrationDto.getCourseDto();
-            Course course = new Course();
-            course.setId(course.getId());
-            course.setName(courseDto.getName());
-            updParticipantRegistration.setCourse(course);
+            Optional<Course> foundCourse = courseRepository.findById(courseDto.getId());
+            if(foundCourse.isPresent()){
+                updParticipantRegistration.setCourse(foundCourse.get());
+            }
 
             UserDto userDto = participantRegistrationDto.getUserDto();
-            User user = new User();
-            user.setId(userDto.getId());
-            user.setFirstName(userDto.getFirstName());
-            user.setLastName(userDto.getLastName());
-            user.setUserName(userDto.getUserName());
-            updParticipantRegistration.setUser(user);
+           Optional<User> foundUser = userRepository.findById(userDto.getId());
+           if(foundUser.isPresent()) {
+               updParticipantRegistration.setUser(foundUser.get());
+           }
 
             updParticipantRegistration.setAccepted(participantRegistrationDto.isAccepted());
+           
             repository.saveAndFlush(updParticipantRegistration);
         }
-
     }
 
     @Override

@@ -4,10 +4,10 @@ import com.sda.TrainingManagementSystem.dto.NotificationDto;
 import com.sda.TrainingManagementSystem.dto.UserDto;
 import com.sda.TrainingManagementSystem.dto.UserNotificationDto;
 import com.sda.TrainingManagementSystem.model.Notification;
-import com.sda.TrainingManagementSystem.model.Type;
 import com.sda.TrainingManagementSystem.model.User;
 import com.sda.TrainingManagementSystem.model.UserNotification;
 import com.sda.TrainingManagementSystem.repository.UserNotificationRepository;
+import com.sda.TrainingManagementSystem.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +21,8 @@ public class UserNotificationServiceImpl implements UserNotificationService {
 
     @Autowired
     private UserNotificationRepository userNotificationRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public UserNotificationDto getUserNotificationById( Long id ) {
@@ -83,15 +85,11 @@ public class UserNotificationServiceImpl implements UserNotificationService {
     @Override
     public void addUserNotification( UserNotificationDto userNotificationDto ) {
         UserNotification newUserNotification = new UserNotification();
-
-        User user = new User();
         UserDto userDto = userNotificationDto.getUserDto();
-        user.setId(userDto.getId());
-        user.setFirstName(userDto.getFirstName());
-        user.setLastName(userDto.getLastName());
-        user.setType(Type.valueOf(userDto.getType()));
-
-        newUserNotification.setUser(user);
+        Optional<User> foundUser=userRepository.findById(userDto.getId());
+        if(foundUser.isPresent()) {
+           newUserNotification.setUser(foundUser.get());
+        }
         userNotificationRepository.save(newUserNotification);
     }
 
@@ -100,14 +98,9 @@ public class UserNotificationServiceImpl implements UserNotificationService {
         Optional<UserNotification> foundUserNotification = userNotificationRepository.findById(userNotificationDto.getId());
         if (foundUserNotification.isPresent()) {
             UserNotification updUserNotification = foundUserNotification.get();
-            User user = new User();
-            UserDto userDto = userNotificationDto.getUserDto();
-            user.setId(userDto.getId());
-            user.setFirstName(userDto.getFirstName());
-            user.setLastName(userDto.getLastName());
-            user.setType(Type.valueOf(userDto.getType()));
-
-            updUserNotification.setUser(user);
+            Optional<User> foundUser = userRepository.findById(userNotificationDto.getUserDto().getId());
+            if(foundUser.isPresent()){
+            updUserNotification.setUser(foundUser.get());}
             userNotificationRepository.saveAndFlush(updUserNotification);
         }
     }
