@@ -131,7 +131,7 @@ public class ParticipantRegistrationServiceImpl implements ParticipantRegistrati
            }
 
             updParticipantRegistration.setAccepted(participantRegistrationDto.isAccepted());
-           
+
             repository.saveAndFlush(updParticipantRegistration);
         }
     }
