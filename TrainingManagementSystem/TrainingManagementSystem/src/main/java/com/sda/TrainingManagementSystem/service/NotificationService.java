@@ -10,5 +10,7 @@ public interface NotificationService {
     void addNotification(NotificationDto notificationDto);
     void updateNotification(NotificationDto notificationDto);
     void deleteNotification(Long id);
+    void addNewNotificationToClasses(NotificationDto notificationDto, Long id);
+
 
 }

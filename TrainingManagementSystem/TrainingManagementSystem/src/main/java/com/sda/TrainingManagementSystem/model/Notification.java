@@ -13,7 +13,7 @@ public class Notification {
     private String subject;
     private String contents;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name="classes_notification",
             joinColumns = @JoinColumn(name="notification_id"),
             inverseJoinColumns = @JoinColumn(name = "classes_id"))

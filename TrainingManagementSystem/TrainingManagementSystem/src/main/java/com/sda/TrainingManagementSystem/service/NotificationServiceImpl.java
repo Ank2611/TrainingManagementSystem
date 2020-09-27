@@ -1,7 +1,9 @@
 package com.sda.TrainingManagementSystem.service;
 
 import com.sda.TrainingManagementSystem.dto.NotificationDto;
+import com.sda.TrainingManagementSystem.model.Classes;
 import com.sda.TrainingManagementSystem.model.Notification;
+import com.sda.TrainingManagementSystem.repository.ClassesRepository;
 import com.sda.TrainingManagementSystem.repository.NotificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,8 @@ public class NotificationServiceImpl implements NotificationService {
 
     @Autowired
     private NotificationRepository notificationRepository;
+    @Autowired
+    private ClassesRepository classesRepository;
 
     @Override
     public NotificationDto getNotificationById( Long id ) {
@@ -64,4 +68,19 @@ public class NotificationServiceImpl implements NotificationService {
     public void deleteNotification( Long id ) {
         notificationRepository.deleteById(id);
     }
+
+    @Override
+    public void addNewNotificationToClasses( NotificationDto notificationDto, Long idClasses ) {
+        Notification newNotification = new Notification();
+        newNotification.setContents(notificationDto.getContents());
+        newNotification.setSubject(notificationDto.getSubject());
+        notificationRepository.save(newNotification);
+
+        Optional<Classes> foundclasses = classesRepository.findById(idClasses);
+        if(foundclasses.isPresent()){
+            Classes classes = foundclasses.get();
+            classes.getNotificationList().add(newNotification);
+            classesRepository.save(classes);
+            }
+     }
 }

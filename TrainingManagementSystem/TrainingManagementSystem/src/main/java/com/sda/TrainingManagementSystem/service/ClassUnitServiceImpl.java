@@ -99,7 +99,6 @@ public class ClassUnitServiceImpl implements ClassUnitService {
            course.getClassUnitList().add(newClassUnit);
            courseRepository.save(course);
         }
-
     }
 
     @Override

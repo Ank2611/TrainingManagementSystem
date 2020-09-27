@@ -93,15 +93,15 @@ public class ParticipantRegistrationServiceImpl implements ParticipantRegistrati
             CourseDto courseDto = participantRegistrationDto.getCourseDto();
             Course course = new Course();
             course.setId(courseDto.getId());
-            course.setName(courseDto.getName());
+//            course.setName(courseDto.getName());
             newParticipantRegistration.setCourse(course);
 
             UserDto userDto = participantRegistrationDto.getUserDto();
             User user = new User();
             user.setId(userDto.getId());
-            user.setFirstName(userDto.getFirstName());
-            user.setLastName(userDto.getLastName());
-            user.setUserName(userDto.getUserName());
+//            user.setFirstName(userDto.getFirstName());
+//            user.setLastName(userDto.getLastName());
+//            user.setUserName(userDto.getUserName());
             newParticipantRegistration.setUser(user);
 
             repository.save(newParticipantRegistration);
