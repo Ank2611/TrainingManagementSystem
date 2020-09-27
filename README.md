@@ -6,6 +6,11 @@
 * Notification subsystem
 
 
-## Technologies
+## Tools and Technologies used
 * SpringBoot
 * Hibernate
+* JDK 11
+* Maven
+* IDE - Intellij IDEA Comunity/Ultimate
+* Spring Data JPA
+* MySQL Workbench 8.0 CE
