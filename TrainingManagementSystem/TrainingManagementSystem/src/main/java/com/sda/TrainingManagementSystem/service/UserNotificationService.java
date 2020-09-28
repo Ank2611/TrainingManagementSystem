@@ -11,4 +11,6 @@ public interface UserNotificationService {
     void addUserNotification(UserNotificationDto userNotificationDto);
     void updateUserNotification(UserNotificationDto userNotificationDto);
     void deleteUserNotification(Long id);
+    void notifyAcceptedUser(Long id);
+    void UnreadToReadNotification(Long id, long notificationId);
 }

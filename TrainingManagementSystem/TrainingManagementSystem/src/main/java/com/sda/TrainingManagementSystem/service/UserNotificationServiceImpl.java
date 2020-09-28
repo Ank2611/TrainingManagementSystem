@@ -6,6 +6,7 @@ import com.sda.TrainingManagementSystem.dto.UserNotificationDto;
 import com.sda.TrainingManagementSystem.model.Notification;
 import com.sda.TrainingManagementSystem.model.User;
 import com.sda.TrainingManagementSystem.model.UserNotification;
+import com.sda.TrainingManagementSystem.repository.NotificationRepository;
 import com.sda.TrainingManagementSystem.repository.UserNotificationRepository;
 import com.sda.TrainingManagementSystem.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,8 @@ public class UserNotificationServiceImpl implements UserNotificationService {
     private UserNotificationRepository userNotificationRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private NotificationRepository notificationRepository;
 
     @Override
     public UserNotificationDto getUserNotificationById( Long id ) {
@@ -108,5 +111,44 @@ public class UserNotificationServiceImpl implements UserNotificationService {
     @Override
     public void deleteUserNotification( Long id ) {
         userNotificationRepository.deleteById(id);
+    }
+
+    @Override
+    public void notifyAcceptedUser( Long id ) {
+        Optional<User> foundUser = userRepository.findById(id);
+        if(foundUser.isPresent()) {
+            UserNotification newUserNotification = null;
+            User user = foundUser.get();
+            if (user.getUserNotification() != null) {
+                newUserNotification = user.getUserNotification();
+            }
+            else{
+                UserNotification userNotification = new UserNotification();
+                userNotification.setUser(user);
+            }
+                Notification notification = new Notification();
+                notification.setSubject("You've been accepted");
+                notificationRepository.save(notification);
+
+            newUserNotification.getUnreadNotificationList().add(notification);
+            userNotificationRepository.save(newUserNotification);
+        }
+    }
+
+    @Override
+    public void UnreadToReadNotification( Long id, long notificationId ) {
+        Optional<User> foundUser = userRepository.findById(id);
+        if(foundUser.isPresent()){
+            User user = foundUser.get();
+            UserNotification userNotification = user.getUserNotification();
+            List<Notification> unreadNotificationList = userNotification.getUnreadNotificationList();
+            for(int i=0; i<unreadNotificationList.size(); i++) {
+                Notification unreadNotification = unreadNotificationList.get(i);
+                if(unreadNotification.getId().equals(notificationId)){
+                    unreadNotificationList.remove(unreadNotification);
+                    userNotification.getReadNotificationList().add(unreadNotification);
+                }
+            }
+        }
     }
 }
