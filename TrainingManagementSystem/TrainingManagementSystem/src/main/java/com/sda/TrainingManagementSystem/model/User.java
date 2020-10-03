@@ -15,7 +15,7 @@ public class User {
     private Type type;
     private String firstName;
     private String lastName;
-    private boolean isActive;
+    private boolean status;
 
     @OneToOne(mappedBy="user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private ParticipantRegistration participantRegistration;
@@ -72,12 +72,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public boolean isActive() {
-        return isActive;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setActive( boolean active ) {
-        isActive = active;
+    public void setStatus( boolean status ) {
+        this.status = status;
     }
 
     public ParticipantRegistration getParticipantRegistration() {

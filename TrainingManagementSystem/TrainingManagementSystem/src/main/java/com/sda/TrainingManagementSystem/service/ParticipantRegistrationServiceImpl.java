@@ -51,7 +51,7 @@ public class ParticipantRegistrationServiceImpl implements ParticipantRegistrati
             userDto.setUserName(user.getUserName());
             userDto.setFirstName(user.getFirstName());
             userDto.setType(user.getType().name());
-            userDto.setActive(user.isActive());
+            userDto.setStatus(user.isStatus());
             participantRegistrationDto.setUserDto(userDto);
             return participantRegistrationDto;
         }
@@ -81,7 +81,7 @@ public class ParticipantRegistrationServiceImpl implements ParticipantRegistrati
             userDto.setUserName(user.getUserName());
             userDto.setFirstName(user.getFirstName());
             userDto.setType(user.getType().name());
-            userDto.setActive(user.isActive());
+            userDto.setStatus(user.isStatus());
             participantRegistrationDto.setUserDto(userDto);
 
             participantDtoList.add(participantRegistrationDto);

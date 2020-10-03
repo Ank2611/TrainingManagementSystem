@@ -8,7 +8,7 @@ public class UserDto {
     private String type;
     private String firstName;
     private String lastName;
-    private boolean isActive;
+    private boolean status;
     private ParticipantRegistrationDto participantRegistrationDto;
     private UserNotificationDto userNotificationDto;
 
@@ -60,12 +60,12 @@ public class UserDto {
         this.lastName = lastName;
     }
 
-    public boolean isActive() {
-        return isActive;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setActive( boolean active ) {
-        isActive = active;
+    public void setStatus( boolean status ) {
+        this.status = status;
     }
 
     public ParticipantRegistrationDto getParticipantRegistrationDto() {

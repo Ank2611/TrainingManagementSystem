@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
             userDto.setType(userFounded.getType().name());
             userDto.setFirstName(userFounded.getFirstName());
             userDto.setLastName(userFounded.getLastName());
-            userDto.setActive(userFounded.isActive());
+            userDto.setStatus(userFounded.isStatus());
 
             return userDto;
         }
@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService {
             userDto.setType(user.getType().name());
             userDto.setFirstName(user.getFirstName());
             userDto.setLastName(user.getLastName());
-            userDto.setActive(user.isActive());
+            userDto.setStatus(user.isStatus());
 
 //            courseDto.setId(course.getId());
 //            courseDto.setName(course.getName());
@@ -80,7 +80,7 @@ public class UserServiceImpl implements UserService {
         newUser.setType(Type.valueOf(userDto.getType()));
         newUser.setFirstName(userDto.getFirstName());
         newUser.setLastName(userDto.getLastName());
-        newUser.setActive(userDto.isActive());
+        newUser.setStatus(userDto.isStatus());
         userRepository.save(newUser);
     }
 
@@ -95,7 +95,7 @@ public class UserServiceImpl implements UserService {
             user.setType(Type.valueOf(userDto.getType()));
             user.setFirstName(userDto.getFirstName());
             user.setLastName(userDto.getLastName());
-            user.setActive(userDto.isActive());
+            user.setStatus(userDto.isStatus());
             userRepository.saveAndFlush(user);
         }
     }
@@ -115,7 +115,7 @@ public class UserServiceImpl implements UserService {
             userDto.setUserName(user.getUserName());
             userDto.setFirstName(user.getFirstName());
             userDto.setLastName(user.getLastName());
-            userDto.setActive(user.isActive());
+            userDto.setStatus(user.isStatus());
             userDtoList.add(userDto);
         }
         return userDtoList;

@@ -43,6 +43,7 @@ public class ClassUnitServiceImpl implements ClassUnitService {
             }
 
             classUnitDto.setClassesDtoList(classesDtoList);
+            return classUnitDto;
         }
         return null;
     }
