@@ -80,6 +80,7 @@ public class ParticipantRegistrationServiceImpl implements ParticipantRegistrati
             userDto.setId(user.getId());
             userDto.setUserName(user.getUserName());
             userDto.setFirstName(user.getFirstName());
+            userDto.setLastName(user.getLastName());
             userDto.setType(user.getType().name());
             userDto.setStatus(user.isStatus());
             participantRegistrationDto.setUserDto(userDto);

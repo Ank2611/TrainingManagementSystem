@@ -43,22 +43,22 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDto> getAll() {
-        List<User> users = userRepository.findAll();
-        List<UserDto> userDtoList = new ArrayList<>();
-        for (User user : users) {
-            UserDto userDto = new UserDto();
+            List<User> users = userRepository.findAll();
+            List<UserDto> userDtoList = new ArrayList<>();
+            for (User user : users) {
+                UserDto userDto = new UserDto();
 //            ParticipantRegistrationDto participantRegistrationDto = new ParticipantRegistrationDto();
 //            ParticipantRegistration participantRegistration = user.getParticipantRegistration();
 //            CourseDto courseDto = new CourseDto();
 //            Course course = participantRegistration.getCourse();
 
-            userDto.setId(user.getId());
-            userDto.setUserName(user.getUserName());
-            userDto.setPassword(user.getPassword());
-            userDto.setType(user.getType().name());
-            userDto.setFirstName(user.getFirstName());
-            userDto.setLastName(user.getLastName());
-            userDto.setStatus(user.isStatus());
+                userDto.setId(user.getId());
+                userDto.setUserName(user.getUserName());
+                userDto.setPassword(user.getPassword());
+                userDto.setType(user.getType().name());
+                userDto.setFirstName(user.getFirstName());
+                userDto.setLastName(user.getLastName());
+                userDto.setStatus(user.isStatus());
 
 //            courseDto.setId(course.getId());
 //            courseDto.setName(course.getName());
@@ -67,9 +67,9 @@ public class UserServiceImpl implements UserService {
 //            participantRegistrationDto.setCourseDto(courseDto);
 //            participantRegistrationDto.setDate(participantRegistration.getDate());
 //            userDto.setParticipantRegistrationDto(participantRegistrationDto);
-            userDtoList.add(userDto);
-        }
-        return userDtoList;
+                userDtoList.add(userDto);
+            }
+            return userDtoList;
     }
 
     @Override
