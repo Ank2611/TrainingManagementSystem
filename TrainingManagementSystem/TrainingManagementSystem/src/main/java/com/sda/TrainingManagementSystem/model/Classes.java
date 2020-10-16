@@ -13,7 +13,7 @@ public class Classes {
     private Long id;
     private String subject;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date date;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

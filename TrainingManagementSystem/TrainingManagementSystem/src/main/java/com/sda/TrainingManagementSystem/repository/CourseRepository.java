@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface CourseRepository extends JpaRepository<Course, Long> {
 
-    @Query(value="SELECT r.*, c.name,u.first_name, u.last_name \n" +
+    @Query(value="SELECT r.*, c.*, u.*  \n" +
             "FROM trainingmanagementsystem.registration r \n" +
             "join trainingmanagementsystem.courses c on r.course_id = c.id\n" +
             "join trainingmanagementsystem.users u on u.id = r.user_id where u.id= :id", nativeQuery = true)

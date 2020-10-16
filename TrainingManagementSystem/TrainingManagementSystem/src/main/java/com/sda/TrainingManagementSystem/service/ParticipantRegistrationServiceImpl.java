@@ -45,6 +45,7 @@ public class ParticipantRegistrationServiceImpl implements ParticipantRegistrati
             courseDto.setName(course.getName());
             participantRegistrationDto.setCourseDto(courseDto);
 
+
             UserDto userDto = new UserDto();
             User user = participantFound.getUser();
             userDto.setId(user.getId());
@@ -54,6 +55,7 @@ public class ParticipantRegistrationServiceImpl implements ParticipantRegistrati
             userDto.setStatus(user.isStatus());
             participantRegistrationDto.setUserDto(userDto);
             return participantRegistrationDto;
+
         }
         return null;
     }
@@ -84,7 +86,6 @@ public class ParticipantRegistrationServiceImpl implements ParticipantRegistrati
             userDto.setType(user.getType().name());
             userDto.setStatus(user.isStatus());
             participantRegistrationDto.setUserDto(userDto);
-
             participantDtoList.add(participantRegistrationDto);
 
         }
@@ -99,14 +100,6 @@ public class ParticipantRegistrationServiceImpl implements ParticipantRegistrati
         Optional<Course> foundCourse = courseRepository.findById(courseDto.getId());
         UserDto userDto = participantRegistrationDto.getUserDto();
         Optional<User> foundUser = userRepository.findById(userDto.getId());
-//        List<Course> courses = courseRepository.findAllCoursesByUser(userDto.getId());
-//        if(!courses.contains(foundCourse) && (foundCourse.isPresent() && foundUser.isPresent())){
-//            newParticipantRegistration.setCourse(foundCourse.get());
-//            newParticipantRegistration.setUser(foundUser.get());
-//            newParticipantRegistration.setDate(new Date());
-//            newParticipantRegistration.setAccepted(participantRegistrationDto.isAccepted());
-//            repository.save(newParticipantRegistration);
-//        }
 
         if(foundCourse.isPresent() && foundUser.isPresent()){
             newParticipantRegistration.setCourse(foundCourse.get());

@@ -1,7 +1,9 @@
 package com.sda.TrainingManagementSystem.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -15,12 +17,10 @@ public class ParticipantRegistration {
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="course_id")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Course course;
 
     private boolean accepted;

@@ -1,6 +1,8 @@
 package com.sda.TrainingManagementSystem.dto;
 
 
+import java.util.List;
+
 public class UserDto {
     private long id;
     private String userName;
@@ -9,7 +11,7 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private boolean status;
-    private ParticipantRegistrationDto participantRegistrationDto;
+    private List<ParticipantRegistrationDto> participantRegistrationDtos;
     private UserNotificationDto userNotificationDto;
 
     public long getId() {
@@ -68,12 +70,12 @@ public class UserDto {
         this.status = status;
     }
 
-    public ParticipantRegistrationDto getParticipantRegistrationDto() {
-        return participantRegistrationDto;
+    public List<ParticipantRegistrationDto> getParticipantRegistrationDtos() {
+        return participantRegistrationDtos;
     }
 
-    public void setParticipantRegistrationDto( ParticipantRegistrationDto participantRegistrationDto ) {
-        this.participantRegistrationDto = participantRegistrationDto;
+    public void setParticipantRegistrationDtos( List<ParticipantRegistrationDto> participantRegistrationDtos ) {
+        this.participantRegistrationDtos = participantRegistrationDtos;
     }
 
     public UserNotificationDto getUserNotificationDto() {

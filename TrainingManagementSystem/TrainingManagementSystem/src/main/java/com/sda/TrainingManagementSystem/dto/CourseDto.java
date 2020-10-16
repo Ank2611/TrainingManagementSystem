@@ -8,7 +8,7 @@ public class CourseDto {
     private long id;
     private String name;
     private List<ClassUnitDto> classUnitDtoList = new ArrayList<>();
-    private ParticipantRegistrationDto participantRegistrationDto;
+    private List<ParticipantRegistrationDto> participantRegistrationDtos = new ArrayList<>();
 
     public long getId() {
         return id;
@@ -34,11 +34,11 @@ public class CourseDto {
         this.classUnitDtoList = classUnitDtoList;
     }
 
-    public ParticipantRegistrationDto getParticipantRegistrationDto() {
-        return participantRegistrationDto;
+    public List<ParticipantRegistrationDto> getParticipantRegistrationDtos() {
+        return participantRegistrationDtos;
     }
 
-    public void setParticipantRegistrationDto( ParticipantRegistrationDto participantRegistrationDto ) {
-        this.participantRegistrationDto = participantRegistrationDto;
+    public void setParticipantRegistrationDtos( List<ParticipantRegistrationDto> participantRegistrationDtos ) {
+        this.participantRegistrationDtos = participantRegistrationDtos;
     }
 }

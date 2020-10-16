@@ -1,6 +1,8 @@
 package com.sda.TrainingManagementSystem.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="users")
@@ -17,8 +19,8 @@ public class User {
     private String lastName;
     private boolean status;
 
-    @OneToOne(mappedBy="user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private ParticipantRegistration participantRegistration;
+    @OneToMany(mappedBy ="user" ,cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ParticipantRegistration> participantRegistrations= new ArrayList<>();
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private UserNotification userNotification;
@@ -80,12 +82,12 @@ public class User {
         this.status = status;
     }
 
-    public ParticipantRegistration getParticipantRegistration() {
-        return participantRegistration;
+    public List<ParticipantRegistration> getParticipantRegistrations() {
+        return participantRegistrations;
     }
 
-    public void setParticipantRegistration( ParticipantRegistration participantRegistration ) {
-        this.participantRegistration = participantRegistration;
+    public void setParticipantRegistrations( List<ParticipantRegistration> participantRegistrations ) {
+        this.participantRegistrations = participantRegistrations;
     }
 
     public UserNotification getUserNotification() {
