@@ -4,7 +4,7 @@ package com.sda.TrainingManagementSystem.dto;
 import java.util.List;
 
 public class UserDto {
-    private long id;
+    private Long id;
     private String userName;
     private String password;
     private String type;
@@ -18,7 +18,7 @@ public class UserDto {
         return id;
     }
 
-    public void setId( long id ) {
+    public void setId( Long id ) {
         this.id = id;
     }
 

@@ -18,10 +18,10 @@ public class ParticipantRegistration {
     private Date date;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private User user;
+    private User user= new User();
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Course course;
+    private Course course= new Course();
 
     private boolean accepted;
 

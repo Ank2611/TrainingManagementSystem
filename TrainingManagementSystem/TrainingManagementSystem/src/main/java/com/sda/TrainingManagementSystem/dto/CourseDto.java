@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CourseDto {
-    private long id;
+    private Long id;
     private String name;
     private List<ClassUnitDto> classUnitDtoList = new ArrayList<>();
     private List<ParticipantRegistrationDto> participantRegistrationDtos = new ArrayList<>();
@@ -14,7 +14,7 @@ public class CourseDto {
         return id;
     }
 
-    public void setId( long id ) {
+    public void setId( Long id ) {
         this.id = id;
     }
 
