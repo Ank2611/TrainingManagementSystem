@@ -1,6 +1,7 @@
 package com.sda.TrainingManagementSystem.service;
 
 import com.sda.TrainingManagementSystem.dto.ClassUnitDto;
+import com.sda.TrainingManagementSystem.dto.ClassesByUserDto;
 import com.sda.TrainingManagementSystem.dto.ClassesDto;
 import com.sda.TrainingManagementSystem.model.ClassUnit;
 import com.sda.TrainingManagementSystem.model.Classes;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -90,6 +92,7 @@ public class ClassesServiceImpl implements ClassesService {
 
     @Override
     public List<ClassesDto> getAllByClassUnitId( Long id ) {
+
         Optional<ClassUnit> foundClassUnit = classUnitRepository.findById(id);
         if (foundClassUnit.isPresent()) {
             ClassUnit classUnit = foundClassUnit.get();
@@ -104,7 +107,6 @@ public class ClassesServiceImpl implements ClassesService {
             }
             return classesDtoList;
         }
-
         return null;
     }
 
@@ -126,4 +128,8 @@ public class ClassesServiceImpl implements ClassesService {
     }
 
 
+    @Override
+    public List<ClassesByUserDto> getAllClassesByUser( Long idUser, Date date ) {
+        return classesRepository.getAllClassesByUser(idUser, date);
+    }
 }

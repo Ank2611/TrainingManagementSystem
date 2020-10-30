@@ -1,6 +1,5 @@
 package com.sda.TrainingManagementSystem.repository;
 
-import com.sda.TrainingManagementSystem.model.Course;
 import com.sda.TrainingManagementSystem.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

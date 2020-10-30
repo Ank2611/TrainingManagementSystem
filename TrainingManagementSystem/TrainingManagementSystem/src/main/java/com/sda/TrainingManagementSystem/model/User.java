@@ -26,7 +26,7 @@ public class User {
     private UserNotification userNotification;
 
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

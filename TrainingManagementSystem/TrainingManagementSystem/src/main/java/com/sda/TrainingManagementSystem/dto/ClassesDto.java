@@ -9,7 +9,7 @@ public class ClassesDto {
     private Long id;
     private String subject;
     private Date date;
-    private ClassUnitDto classUnitDto;
+    private ClassUnitDto classUnitDto ;
     private List<NotificationDto> notificationDtoList = new ArrayList<>();
 
     public Long getId() {

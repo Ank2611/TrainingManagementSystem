@@ -10,7 +10,7 @@ public class CourseDto {
     private List<ClassUnitDto> classUnitDtoList = new ArrayList<>();
     private List<ParticipantRegistrationDto> participantRegistrationDtos = new ArrayList<>();
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

@@ -3,16 +3,16 @@ package com.sda.TrainingManagementSystem.dto;
 import java.util.List;
 
 public class UserNotificationDto {
-    private long id;
+    private Long id;
     private List<NotificationDto> readNotificationDtoList;
     private List<NotificationDto> unreadNotificationDtoList;
     private UserDto userDto;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId( long id ) {
+    public void setId( Long id ) {
         this.id = id;
     }
 

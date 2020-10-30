@@ -15,9 +15,9 @@ public interface UserService {
 
     void updateUser( UserDto userDto );
 
-    void deleteUser(Long id);
-    List<UserDto> findByType( String type);
+    void deleteUser( Long id );
 
+    List<UserDto> findByType( String type );
 
 
 }

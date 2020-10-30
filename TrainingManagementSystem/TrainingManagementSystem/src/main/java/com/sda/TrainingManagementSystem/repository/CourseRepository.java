@@ -12,8 +12,8 @@ import java.util.List;
 @Repository
 public interface CourseRepository extends JpaRepository<Course, Long> {
 
-    @Query(value="select c.id,c.name from trainingmanagementsystem.courses c\n" +
-            "join trainingmanagementsystem.registration r on r.course_id = c.id where r.user_id= :id", nativeQuery = true)
+    @Query(value="select c.id,c.name from courses c\n" +
+            "join registration r on r.course_id = c.id where r.user_id= :id", nativeQuery = true)
 
     List<Course> findAllCoursesByUser(@Param("id") Long id);
 

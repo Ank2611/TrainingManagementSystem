@@ -1,14 +1,17 @@
 package com.sda.TrainingManagementSystem.controller;
 
+import com.sda.TrainingManagementSystem.dto.ClassesByUserDto;
 import com.sda.TrainingManagementSystem.dto.ClassesDto;
 import com.sda.TrainingManagementSystem.dto.UserDto;
 import com.sda.TrainingManagementSystem.model.Classes;
 import com.sda.TrainingManagementSystem.service.ClassesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -31,12 +34,17 @@ public class ClassesController {
         return new ResponseEntity(classesDto, HttpStatus.OK);
     }
 
-    @GetMapping("/getAllByIdClassUnit/{id}")
-    public ResponseEntity<List<ClassesDto>> getAllByIdClassUnit(@PathVariable("id") Long id){
+    @GetMapping("/getAllByIdClassUnit/{idClassUnit}")
+    public ResponseEntity<List<ClassesDto>> getAllByIdClassUnit(@PathVariable("idClassUnit") Long id){
         List<ClassesDto> classesDtoList = classesService.getAllByClassUnitId(id);
         return new ResponseEntity(classesDtoList,HttpStatus.OK);
     }
 
+    @GetMapping("/getAllClassesByUser/{id}/{date}")
+    public ResponseEntity<List<ClassesByUserDto>> getAllClassesByUser(@PathVariable("id") Long idUser, @PathVariable("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date){
+        List<ClassesByUserDto> classesByUserDtoList = classesService.getAllClassesByUser( idUser, date);
+        return new ResponseEntity<>(classesByUserDtoList,HttpStatus.OK);
+    }
     @PostMapping("/addClasses")
     public ResponseEntity addClasses( @RequestBody ClassesDto classesDto ) {
         classesService.addClasses(classesDto);

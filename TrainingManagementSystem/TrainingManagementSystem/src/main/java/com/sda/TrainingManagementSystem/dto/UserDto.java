@@ -14,7 +14,7 @@ public class UserDto {
     private List<ParticipantRegistrationDto> participantRegistrationDtos;
     private UserNotificationDto userNotificationDto;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
