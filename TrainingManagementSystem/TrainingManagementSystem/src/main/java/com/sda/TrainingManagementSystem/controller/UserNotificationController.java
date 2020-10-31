@@ -31,6 +31,7 @@ public class UserNotificationController {
         return new ResponseEntity(userNotificationDto, HttpStatus.OK);
     }
 
+
     @PostMapping("/addUserNotification")
     public ResponseEntity addUserNotification(@RequestBody UserNotificationDto userNotificationDto){
         userNotificationService.addUserNotification(userNotificationDto);

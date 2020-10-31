@@ -2,6 +2,7 @@ package com.sda.TrainingManagementSystem.service;
 
 
 import com.sda.TrainingManagementSystem.dto.UserNotificationDto;
+import com.sda.TrainingManagementSystem.model.UserNotification;
 
 import java.util.List;
 
@@ -13,4 +14,5 @@ public interface UserNotificationService {
     void deleteUserNotification(Long id);
     void notifyAcceptedUser(Long id);
     void UnreadToReadNotification(Long id, long notificationId);
+
 }

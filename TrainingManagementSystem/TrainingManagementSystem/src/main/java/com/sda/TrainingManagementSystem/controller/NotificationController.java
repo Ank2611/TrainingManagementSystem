@@ -2,6 +2,7 @@ package com.sda.TrainingManagementSystem.controller;
 
 
 import com.sda.TrainingManagementSystem.dto.CourseDto;
+import com.sda.TrainingManagementSystem.dto.NotificationByClassesDto;
 import com.sda.TrainingManagementSystem.dto.NotificationDto;
 import com.sda.TrainingManagementSystem.model.Notification;
 import com.sda.TrainingManagementSystem.service.NotificationService;
@@ -33,6 +34,23 @@ public class NotificationController {
         return new ResponseEntity(notificationDto, HttpStatus.OK);
     }
 
+    @GetMapping("/getAllNotificationByClasses/{id}")
+    public ResponseEntity<NotificationByClassesDto> getAllNotificationByClasses( @PathVariable("id") Long id){
+        List<NotificationByClassesDto> notificationByClassesDto=notificationService.getAllNotificationByClasses(id);
+        return new ResponseEntity(notificationByClassesDto, HttpStatus.OK);
+    }
+
+    @GetMapping("/getAllReadNotification/{idUser}")
+    public ResponseEntity<List<NotificationDto>> getAllReadNotification(@PathVariable("idUser") Long idUser){
+        List<NotificationDto> notificationDto = notificationService.getAllReadNotification(idUser);
+        return new ResponseEntity(notificationDto,HttpStatus.OK);
+    }
+
+    @GetMapping("/getAllUnreadNotification/{idUser}")
+    public ResponseEntity<List<NotificationDto>> getAllUnreadNotification(@PathVariable("idUser") Long idUser){
+        List<NotificationDto> notificationDto = notificationService.getAllUnreadNotification(idUser);
+        return new ResponseEntity(notificationDto,HttpStatus.OK);
+    }
 
     @PostMapping("/addNotification")
     public ResponseEntity addNotification(@RequestBody NotificationDto notificationDto ){
@@ -52,7 +70,7 @@ public class NotificationController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @DeleteMapping("/deleteCourse/{id}")
+    @DeleteMapping("/deleteNotification/{id}")
     public ResponseEntity deleteNotification(@PathVariable("id") Long id){
         notificationService.deleteNotification(id);
         return new ResponseEntity(HttpStatus.OK);
