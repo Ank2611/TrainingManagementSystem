@@ -1,9 +1,7 @@
 package com.sda.TrainingManagementSystem.controller;
 
 import com.sda.TrainingManagementSystem.dto.ParticipantRegistrationDto;
-import com.sda.TrainingManagementSystem.model.ParticipantRegistration;
 import com.sda.TrainingManagementSystem.service.ParticipantRegistrationService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

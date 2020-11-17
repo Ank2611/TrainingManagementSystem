@@ -140,4 +140,6 @@ public class ParticipantRegistrationServiceImpl implements ParticipantRegistrati
     public void deleteParticipant( Long id ) {
         repository.deleteById(id);
     }
+
+
 }

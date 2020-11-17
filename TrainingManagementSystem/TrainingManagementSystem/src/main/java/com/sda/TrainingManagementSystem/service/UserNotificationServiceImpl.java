@@ -114,7 +114,7 @@ public class UserNotificationServiceImpl implements UserNotificationService {
     }
 
     @Override
-    public void notifyAcceptedUser( Long id ) {
+    public void notifyAcceptedUser(UserNotificationDto userNotificationDto, Long id ) {
         Optional<User> foundUser = userRepository.findById(id);
         if(foundUser.isPresent()) {
             UserNotification newUserNotification = null;
@@ -125,9 +125,12 @@ public class UserNotificationServiceImpl implements UserNotificationService {
             else{
                 UserNotification userNotification = new UserNotification();
                 userNotification.setUser(user);
+                userNotificationRepository.save(userNotification);
+                newUserNotification = userNotification;
             }
                 Notification notification = new Notification();
-                notification.setSubject("You've been accepted");
+                notification.setSubject("You've been accepted to the course");
+                notification.setContents(" ");
                 notificationRepository.save(notification);
 
             newUserNotification.getUnreadNotificationList().add(notification);
@@ -136,7 +139,7 @@ public class UserNotificationServiceImpl implements UserNotificationService {
     }
 
     @Override
-    public void UnreadToReadNotification( Long id, long notificationId ) {
+    public void unreadToReadNotification( Long id, long notificationId ) {
         Optional<User> foundUser = userRepository.findById(id);
         if(foundUser.isPresent()){
             User user = foundUser.get();

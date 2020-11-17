@@ -1,11 +1,12 @@
 package com.sda.TrainingManagementSystem.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserNotificationDto {
     private Long id;
-    private List<NotificationDto> readNotificationDtoList;
-    private List<NotificationDto> unreadNotificationDtoList;
+    private List<NotificationDto> readNotificationDtoList= new ArrayList<>();
+    private List<NotificationDto> unreadNotificationDtoList = new ArrayList<>();
     private UserDto userDto;
 
     public Long getId() {

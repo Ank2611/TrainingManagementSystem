@@ -12,7 +12,7 @@ public interface UserNotificationService {
     void addUserNotification(UserNotificationDto userNotificationDto);
     void updateUserNotification(UserNotificationDto userNotificationDto);
     void deleteUserNotification(Long id);
-    void notifyAcceptedUser(Long id);
-    void UnreadToReadNotification(Long id, long notificationId);
+    void notifyAcceptedUser(UserNotificationDto userNotificationDto,Long id);
+    void unreadToReadNotification(Long id, long notificationId);
 
 }

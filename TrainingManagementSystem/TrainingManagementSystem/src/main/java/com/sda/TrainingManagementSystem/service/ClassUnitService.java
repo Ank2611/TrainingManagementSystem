@@ -1,5 +1,6 @@
 package com.sda.TrainingManagementSystem.service;
 
+import com.sda.TrainingManagementSystem.dto.ClassUnitByUserDto;
 import com.sda.TrainingManagementSystem.dto.ClassUnitDto;
 
 import java.util.List;
@@ -13,4 +14,5 @@ public interface ClassUnitService {
     void addNewClassUnitInCourse(ClassUnitDto classUnitDto, Long idCourse);
     void linkClassUnitInCourse(Long idClassUnit, Long idCourse);
     List<ClassUnitDto> getAllByIdCourse(Long id);
+    List<ClassUnitByUserDto> getAllClassUnitByUser( Long idUser);
 }

@@ -18,6 +18,4 @@ public interface NotificationRepository extends JpaRepository<Notification, Long
     "where cls.id= :id")
     List<NotificationByClassesDto> getAllNotificationByClasses(@Param("id") Long id );
 
-
-
 }

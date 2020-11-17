@@ -1,6 +1,7 @@
 package com.sda.TrainingManagementSystem.dto;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserDto {
@@ -11,7 +12,7 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private boolean status;
-    private List<ParticipantRegistrationDto> participantRegistrationDtos;
+    private List<ParticipantRegistrationDto> participantRegistrationDtos = new ArrayList<>();
     private UserNotificationDto userNotificationDto;
 
     public Long getId() {

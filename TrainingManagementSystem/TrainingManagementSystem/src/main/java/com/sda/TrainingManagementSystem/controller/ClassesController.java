@@ -2,8 +2,6 @@ package com.sda.TrainingManagementSystem.controller;
 
 import com.sda.TrainingManagementSystem.dto.ClassesByUserDto;
 import com.sda.TrainingManagementSystem.dto.ClassesDto;
-import com.sda.TrainingManagementSystem.dto.UserDto;
-import com.sda.TrainingManagementSystem.model.Classes;
 import com.sda.TrainingManagementSystem.service.ClassesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;

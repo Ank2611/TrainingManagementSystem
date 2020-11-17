@@ -1,8 +1,10 @@
 package com.sda.TrainingManagementSystem.controller;
 
+import com.sda.TrainingManagementSystem.dto.ClassUnitByUserDto;
 import com.sda.TrainingManagementSystem.dto.ClassUnitDto;
 import com.sda.TrainingManagementSystem.model.ClassUnit;
 import com.sda.TrainingManagementSystem.service.ClassUnitService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
@@ -35,6 +37,12 @@ public class ClassUnitController {
     public ResponseEntity<ClassUnitDto> getAllByIdCourse(@PathVariable("idCourse") Long id){
         List<ClassUnitDto> classUnitDtoList = classUnitService.getAllByIdCourse(id);
         return new ResponseEntity(classUnitDtoList, HttpStatus.OK);
+    }
+
+    @GetMapping("/getAllClassUnitByUser/{idUser}")
+    public ResponseEntity<ClassUnitByUserDto> getAllClassUnitByUser( @PathVariable("idUser") Long id){
+        List<ClassUnitByUserDto> classUnitDtoList=classUnitService.getAllClassUnitByUser(id);
+        return new ResponseEntity(classUnitDtoList,HttpStatus.OK);
     }
 
     @PostMapping("/addClassUnit")

@@ -1,10 +1,6 @@
 package com.sda.TrainingManagementSystem.service;
 
-import com.sda.TrainingManagementSystem.dto.CourseDto;
-import com.sda.TrainingManagementSystem.dto.ParticipantRegistrationDto;
 import com.sda.TrainingManagementSystem.dto.UserDto;
-import com.sda.TrainingManagementSystem.model.Course;
-import com.sda.TrainingManagementSystem.model.ParticipantRegistration;
 import com.sda.TrainingManagementSystem.model.Type;
 import com.sda.TrainingManagementSystem.model.User;
 import com.sda.TrainingManagementSystem.repository.UserRepository;

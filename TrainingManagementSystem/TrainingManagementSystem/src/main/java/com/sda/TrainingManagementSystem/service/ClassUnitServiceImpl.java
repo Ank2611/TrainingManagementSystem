@@ -1,13 +1,11 @@
 package com.sda.TrainingManagementSystem.service;
 
 
-import com.sda.TrainingManagementSystem.dto.ClassUnitDto;
-import com.sda.TrainingManagementSystem.dto.ClassesDto;
-import com.sda.TrainingManagementSystem.model.ClassUnit;
-import com.sda.TrainingManagementSystem.model.Classes;
-import com.sda.TrainingManagementSystem.model.Course;
+import com.sda.TrainingManagementSystem.dto.*;
+import com.sda.TrainingManagementSystem.model.*;
 import com.sda.TrainingManagementSystem.repository.ClassUnitRepository;
 import com.sda.TrainingManagementSystem.repository.CourseRepository;
+import com.sda.TrainingManagementSystem.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +20,8 @@ public class ClassUnitServiceImpl implements ClassUnitService {
     private ClassUnitRepository classUnitRepository;
     @Autowired
     private CourseRepository courseRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public ClassUnitDto getClassUnitById( Long id ) {
@@ -79,6 +79,11 @@ public class ClassUnitServiceImpl implements ClassUnitService {
         }
 
         return null;
+    }
+
+    @Override
+    public List<ClassUnitByUserDto> getAllClassUnitByUser( Long idUser ) {
+         return classUnitRepository.getAllClassUnitByUser(idUser);
     }
 
     @Override

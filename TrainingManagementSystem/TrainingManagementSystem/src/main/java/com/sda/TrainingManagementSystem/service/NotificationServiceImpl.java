@@ -105,16 +105,18 @@ public class NotificationServiceImpl implements NotificationService {
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             UserNotification userNotification = user.getUserNotification();
-            List<Notification> readNotification = userNotification.getReadNotificationList();
-            List<NotificationDto> readNotificationDtos = new ArrayList<>();
-            for (Notification notification : readNotification) {
-                NotificationDto readNotificationDto = new NotificationDto();
-                readNotificationDto.setId(notification.getId());
-                readNotificationDto.setSubject(notification.getSubject());
-                readNotificationDto.setContents(notification.getContents());
-                readNotificationDtos.add(readNotificationDto);
-            }
-            return readNotificationDtos;
+//            if(userNotification.getReadNotificationList().size()>0) {
+                List<Notification> readNotification = userNotification.getReadNotificationList();
+                List<NotificationDto> readNotificationDtos = new ArrayList<>();
+                for (Notification notification : readNotification) {
+                    NotificationDto readNotificationDto = new NotificationDto();
+                    readNotificationDto.setId(notification.getId());
+                    readNotificationDto.setSubject(notification.getSubject());
+                    readNotificationDto.setContents(notification.getContents());
+                    readNotificationDtos.add(readNotificationDto);
+                }
+                return readNotificationDtos;
+//            }
         }
         return null;
     }
@@ -125,16 +127,18 @@ public class NotificationServiceImpl implements NotificationService {
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             UserNotification userNotification = user.getUserNotification();
-            List<Notification> unreadNotification = userNotification.getUnreadNotificationList();
-            List<NotificationDto> unreadNotificationDtos = new ArrayList<>();
-            for (Notification notification : unreadNotification) {
-                NotificationDto unreadNotificationDto = new NotificationDto();
-                unreadNotificationDto.setId(notification.getId());
-                unreadNotificationDto.setSubject(notification.getSubject());
-                unreadNotificationDto.setContents(notification.getContents());
-                unreadNotificationDtos.add(unreadNotificationDto);
-            }
-            return unreadNotificationDtos;
+//            if(userNotification.getUnreadNotificationList().size()>0) {
+                List<Notification> unreadNotification = userNotification.getUnreadNotificationList();
+                List<NotificationDto> unreadNotificationDtos = new ArrayList<>();
+                for (Notification notification : unreadNotification) {
+                    NotificationDto unreadNotificationDto = new NotificationDto();
+                    unreadNotificationDto.setId(notification.getId());
+                    unreadNotificationDto.setSubject(notification.getSubject());
+                    unreadNotificationDto.setContents(notification.getContents());
+                    unreadNotificationDtos.add(unreadNotificationDto);
+                }
+                return unreadNotificationDtos;
+//            }
         }
         return null;
     }

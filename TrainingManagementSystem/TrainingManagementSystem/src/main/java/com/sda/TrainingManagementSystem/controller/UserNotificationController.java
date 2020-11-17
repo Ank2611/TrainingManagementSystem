@@ -3,7 +3,7 @@ package com.sda.TrainingManagementSystem.controller;
 import com.sda.TrainingManagementSystem.dto.UserNotificationDto;
 import com.sda.TrainingManagementSystem.model.UserNotification;
 import com.sda.TrainingManagementSystem.service.UserNotificationService;
-import org.apache.coyote.Response;
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,11 +38,24 @@ public class UserNotificationController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
+    @PostMapping("/notifyAcceptedUser/{id}")
+    public ResponseEntity notifyAcceptedUser(@RequestBody UserNotificationDto userNotificationDto, @PathVariable("id") Long id){
+        userNotificationService.notifyAcceptedUser(userNotificationDto,id);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @PostMapping("/unreadToReadNotification/{id}/{notificationId}")
+    public ResponseEntity unreadToReadNotification( @PathVariable("id") Long id, @PathVariable("notificationId") Long notificationId){
+        userNotificationService.unreadToReadNotification(id, notificationId);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
     @PutMapping("/updateUserNotification")
     public ResponseEntity updateUserNotification(@RequestBody UserNotificationDto userNotificationDto){
         userNotificationService.updateUserNotification(userNotificationDto);
         return new ResponseEntity(HttpStatus.OK);
     }
+
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity delete(@PathVariable("id") Long id){
